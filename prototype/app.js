@@ -15,13 +15,13 @@ const modules = {
 
 const moduleTitles = {
     dashboard: 'Dashboard',
-    fleet: 'Flota - Hoja de Vida Vehículos',
-    fines: 'Gestión de Multas',
-    clients: 'Administración de Clientes',
-    routes: 'Rutas Logísticas',
-    scheduling: 'Programación Diaria',
-    dispatch: 'Despacho de Viajes',
-    settlement: 'Liquidación de Viajes',
+    fleet: 'Flota y Mantenimiento › Hoja de Vida Vehículos',
+    fines: 'Flota y Mantenimiento › Multas de Tránsito',
+    clients: 'Flota y Mantenimiento › Clientes',
+    routes: 'Flota y Mantenimiento › Rutas Logísticas',
+    scheduling: 'Flota y Mantenimiento › Programación Diaria',
+    dispatch: 'Flota y Mantenimiento › Despacho de Viajes',
+    settlement: 'Flota y Mantenimiento › Liquidación de Viajes',
     config: 'Configuración y Seguridad'
 };
 
@@ -34,17 +34,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Navigation
 function initNavigation() {
-    document.querySelectorAll('.nav-item').forEach(item => {
+    // Main nav items (Dashboard, Config)
+    document.querySelectorAll('.nav-item[data-module]').forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
             const module = item.dataset.module;
-            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            clearActiveNav();
             item.classList.add('active');
             loadModule(module);
-            // Close sidebar on mobile
             document.getElementById('sidebar').classList.remove('open');
         });
     });
+
+    // Submenu items
+    document.querySelectorAll('.nav-subitem[data-module]').forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const module = item.dataset.module;
+            clearActiveNav();
+            item.classList.add('active');
+            loadModule(module);
+            document.getElementById('sidebar').classList.remove('open');
+        });
+    });
+
+    // Group toggle (expand/collapse)
+    const groupToggle = document.getElementById('fleetGroupToggle');
+    if (groupToggle) {
+        groupToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            groupToggle.classList.toggle('collapsed');
+            document.getElementById('fleetSubmenu').classList.toggle('open');
+        });
+    }
+}
+
+function clearActiveNav() {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.querySelectorAll('.nav-subitem').forEach(n => n.classList.remove('active'));
 }
 
 function initMenuToggle() {
