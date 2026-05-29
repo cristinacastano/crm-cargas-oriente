@@ -51,8 +51,7 @@ function initNavigation() {
         item.addEventListener('click', (e) => {
             e.preventDefault();
             const module = item.dataset.module;
-            clearActiveNav();
-            item.classList.add('active');
+            setSubitemActive(item);
             loadModule(module);
             document.getElementById('sidebar').classList.remove('open');
         });
@@ -72,6 +71,17 @@ function initNavigation() {
 function clearActiveNav() {
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     document.querySelectorAll('.nav-subitem').forEach(n => n.classList.remove('active'));
+    document.querySelectorAll('.nav-group-toggle').forEach(n => n.classList.remove('has-active'));
+}
+
+function setSubitemActive(item) {
+    clearActiveNav();
+    item.classList.add('active');
+    // Highlight parent group
+    const group = item.closest('.nav-group');
+    if (group) {
+        group.querySelector('.nav-group-toggle').classList.add('has-active');
+    }
 }
 
 function initMenuToggle() {
