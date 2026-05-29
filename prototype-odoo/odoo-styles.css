@@ -1,0 +1,705 @@
+/* ===== Odoo 17 Style Prototype ===== */
+:root {
+    --o-brand: #714B67;
+    --o-brand-light: #8F6B84;
+    --o-action: #00A09D;
+    --o-action-hover: #008784;
+    --o-success: #28A745;
+    --o-warning: #FFC107;
+    --o-danger: #DC3545;
+    --o-info: #17A2B8;
+    --o-bg: #F8F9FA;
+    --o-white: #FFFFFF;
+    --o-border: #DEE2E6;
+    --o-text: #212529;
+    --o-text-muted: #6C757D;
+    --o-text-light: #ADB5BD;
+    --o-navbar-bg: #714B67;
+    --o-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    --o-shadow-lg: 0 4px 12px rgba(0,0,0,0.15);
+    --o-radius: 4px;
+    --o-font: 'Roboto', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--o-font);
+    background: var(--o-bg);
+    color: var(--o-text);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* ===== Navbar (Odoo style) ===== */
+.o-navbar {
+    background: var(--o-navbar-bg);
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.o-navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.o-home-btn {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--o-radius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.o-home-btn:hover { background: rgba(255,255,255,0.25); }
+
+.o-main-menu {
+    display: flex;
+    gap: 4px;
+    margin-left: 12px;
+}
+
+.o-menu-item {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: var(--o-radius);
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.o-menu-item:hover { background: rgba(255,255,255,0.15); color: white; }
+.o-menu-item.active { background: rgba(255,255,255,0.2); color: white; }
+
+.o-navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.o-company-switch {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.8);
+}
+
+.o-company-switch select {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 4px 8px;
+    border-radius: var(--o-radius);
+    font-size: 12px;
+    font-family: var(--o-font);
+    cursor: pointer;
+}
+
+.o-company-switch select option { color: var(--o-text); background: white; }
+
+.o-nav-btn {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.8);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: var(--o-radius);
+    position: relative;
+}
+
+.o-nav-btn:hover { background: rgba(255,255,255,0.15); }
+
+.o-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--o-danger);
+    color: white;
+    font-size: 9px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.o-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* ===== Sub-menu (Odoo module tabs) ===== */
+.o-submenu {
+    background: var(--o-white);
+    border-bottom: 1px solid var(--o-border);
+    padding: 0 16px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+}
+
+.o-submenu-item {
+    padding: 10px 16px;
+    color: var(--o-text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.o-submenu-item:hover {
+    color: var(--o-text);
+    border-bottom-color: var(--o-text-light);
+}
+
+.o-submenu-item.active {
+    color: var(--o-brand);
+    border-bottom-color: var(--o-brand);
+}
+
+/* ===== Content Area ===== */
+.o-content {
+    padding: 0;
+    min-height: calc(100vh - 86px);
+}
+
+/* ===== Control Panel (Odoo action bar) ===== */
+.o-control-panel {
+    background: var(--o-white);
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--o-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.o-cp-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.o-cp-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.o-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--o-text);
+}
+
+.o-breadcrumb .separator {
+    color: var(--o-text-light);
+    font-weight: 400;
+}
+
+.o-breadcrumb .parent {
+    color: var(--o-brand);
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+/* ===== Buttons (Odoo style) ===== */
+.o-btn {
+    padding: 6px 14px;
+    border-radius: var(--o-radius);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid transparent;
+    font-family: var(--o-font);
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.o-btn-primary { background: var(--o-brand); color: white; border-color: var(--o-brand); }
+.o-btn-primary:hover { background: var(--o-brand-light); }
+.o-btn-secondary { background: white; color: var(--o-text); border-color: var(--o-border); }
+.o-btn-secondary:hover { background: var(--o-bg); }
+.o-btn-success { background: var(--o-success); color: white; }
+.o-btn-danger { background: var(--o-danger); color: white; }
+
+.o-btn-icon {
+    background: none;
+    border: 1px solid var(--o-border);
+    width: 32px;
+    height: 32px;
+    border-radius: var(--o-radius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--o-text-muted);
+}
+
+.o-btn-icon:hover { background: var(--o-bg); color: var(--o-text); }
+.o-btn-icon.active { background: var(--o-brand); color: white; border-color: var(--o-brand); }
+
+/* ===== Search Bar ===== */
+.o-searchbar {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--o-border);
+    border-radius: var(--o-radius);
+    padding: 4px 10px;
+    background: white;
+    min-width: 250px;
+}
+
+.o-searchbar input {
+    border: none;
+    outline: none;
+    font-size: 13px;
+    font-family: var(--o-font);
+    flex: 1;
+    padding: 4px;
+}
+
+.o-searchbar i { color: var(--o-text-light); font-size: 13px; }
+
+/* ===== View Switcher ===== */
+.o-view-switch {
+    display: flex;
+    gap: 2px;
+}
+
+/* ===== List View (Odoo tree) ===== */
+.o-list-view {
+    background: var(--o-white);
+    margin: 0;
+}
+
+.o-list-view table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.o-list-view th {
+    background: var(--o-bg);
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--o-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    border-bottom: 1px solid var(--o-border);
+    white-space: nowrap;
+}
+
+.o-list-view td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #F0F0F0;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.o-list-view tr { cursor: pointer; transition: background 0.1s; }
+.o-list-view tbody tr:hover { background: #F0F4FF; }
+
+.o-list-view .o-checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* ===== Status Badges (Odoo style) ===== */
+.o-badge-status {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.o-badge-success { background: #D4EDDA; color: #155724; }
+.o-badge-warning { background: #FFF3CD; color: #856404; }
+.o-badge-danger { background: #F8D7DA; color: #721C24; }
+.o-badge-info { background: #D1ECF1; color: #0C5460; }
+.o-badge-secondary { background: #E9ECEF; color: #495057; }
+.o-badge-primary { background: #E8DEE5; color: #714B67; }
+
+/* ===== Form View (Odoo style) ===== */
+.o-form-view {
+    background: var(--o-white);
+    padding: 20px 24px;
+    max-width: 1200px;
+}
+
+.o-form-statusbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--o-border);
+    margin-bottom: 20px;
+}
+
+.o-statusbar-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.o-statusbar-status {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.o-status-pill {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+    background: var(--o-bg);
+    color: var(--o-text-muted);
+    border: 1px solid var(--o-border);
+}
+
+.o-status-pill.active {
+    background: var(--o-brand);
+    color: white;
+    border-color: var(--o-brand);
+}
+
+.o-status-pill.done {
+    background: var(--o-success);
+    color: white;
+    border-color: var(--o-success);
+}
+
+/* Form Groups */
+.o-form-sheet {
+    padding: 0;
+}
+
+.o-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-bottom: 16px;
+}
+
+.o-field-row {
+    display: flex;
+    align-items: baseline;
+    padding: 6px 0;
+    border-bottom: 1px solid #F5F5F5;
+}
+
+.o-field-label {
+    width: 160px;
+    min-width: 160px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--o-text-muted);
+    padding-right: 12px;
+}
+
+.o-field-value {
+    flex: 1;
+    font-size: 13px;
+    color: var(--o-text);
+    font-weight: 400;
+}
+
+.o-field-value input,
+.o-field-value select {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid transparent;
+    padding: 4px 0;
+    font-size: 13px;
+    font-family: var(--o-font);
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+.o-field-value input:focus,
+.o-field-value select:focus {
+    outline: none;
+    border-bottom-color: var(--o-brand);
+}
+
+.o-field-value input[readonly] {
+    color: var(--o-text);
+    cursor: default;
+}
+
+/* ===== Notebook / Tabs (Odoo style) ===== */
+.o-notebook {
+    margin-top: 20px;
+}
+
+.o-notebook-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--o-border);
+    gap: 0;
+}
+
+.o-notebook-tab {
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--o-text-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.o-notebook-tab:hover { color: var(--o-text); }
+.o-notebook-tab.active { color: var(--o-brand); border-bottom-color: var(--o-brand); }
+
+.o-notebook-content {
+    padding: 16px 0;
+}
+
+/* ===== Inline List (one2many) ===== */
+.o-inline-list {
+    border: 1px solid var(--o-border);
+    border-radius: var(--o-radius);
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.o-inline-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.o-inline-list th {
+    background: var(--o-bg);
+    padding: 8px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--o-text-muted);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--o-border);
+}
+
+.o-inline-list td {
+    padding: 8px 10px;
+    font-size: 12px;
+    border-bottom: 1px solid #F5F5F5;
+}
+
+.o-inline-list tr:last-child td { border-bottom: none; }
+
+.o-add-line {
+    padding: 8px 10px;
+    color: var(--o-brand);
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.o-add-line:hover { text-decoration: underline; }
+
+/* ===== Semaphore dots ===== */
+.o-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.o-dot-green { background: var(--o-success); }
+.o-dot-yellow { background: var(--o-warning); }
+.o-dot-red { background: var(--o-danger); }
+
+/* ===== Kanban View ===== */
+.o-kanban-view {
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+}
+
+.o-kanban-card {
+    background: var(--o-white);
+    border: 1px solid var(--o-border);
+    border-radius: 6px;
+    padding: 14px;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+
+.o-kanban-card:hover { box-shadow: var(--o-shadow-lg); }
+
+.o-kanban-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.o-kanban-card-title {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.o-kanban-card-body {
+    font-size: 12px;
+    color: var(--o-text-muted);
+    line-height: 1.6;
+}
+
+/* ===== Modal (Odoo dialog) ===== */
+.o-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 2000;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 60px;
+}
+
+.o-modal-overlay.active { display: flex; }
+
+.o-modal {
+    background: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 900px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: var(--o-shadow-lg);
+}
+
+.o-modal-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--o-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 10;
+}
+
+.o-modal-header h3 { font-size: 16px; font-weight: 600; }
+
+.o-modal-close {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: var(--o-text-muted);
+    padding: 0 4px;
+}
+
+.o-modal-body { padding: 20px; }
+.o-modal-footer {
+    padding: 12px 20px;
+    border-top: 1px solid var(--o-border);
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    position: sticky;
+    bottom: 0;
+    background: white;
+}
+
+/* ===== Pager ===== */
+.o-pager {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--o-text-muted);
+}
+
+.o-pager button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--o-text-muted);
+    font-size: 14px;
+}
+
+.o-pager button:hover { color: var(--o-text); }
+
+/* ===== Chatter (Odoo log) ===== */
+.o-chatter {
+    border-top: 1px solid var(--o-border);
+    margin-top: 24px;
+    padding-top: 16px;
+}
+
+.o-chatter-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--o-text-muted);
+    margin-bottom: 12px;
+}
+
+.o-log-item {
+    display: flex;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #F5F5F5;
+    font-size: 12px;
+}
+
+.o-log-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--o-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--o-text-muted);
+    flex-shrink: 0;
+}
+
+.o-log-content { flex: 1; }
+.o-log-date { color: var(--o-text-light); font-size: 11px; }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .o-group { grid-template-columns: 1fr; }
+    .o-navbar-right .o-company-switch { display: none; }
+    .o-kanban-view { grid-template-columns: 1fr; }
+    .o-submenu { padding: 0 8px; }
+    .o-submenu-item { padding: 10px 10px; font-size: 12px; }
+}
