@@ -38,6 +38,7 @@ function initNavigation() {
     document.querySelectorAll('.nav-item[data-module]').forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
             const module = item.dataset.module;
             clearActiveNav();
             item.classList.add('active');
@@ -50,6 +51,7 @@ function initNavigation() {
     document.querySelectorAll('.nav-subitem[data-module]').forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
             const module = item.dataset.module;
             setSubitemActive(item);
             loadModule(module);
@@ -62,8 +64,16 @@ function initNavigation() {
     if (groupToggle) {
         groupToggle.addEventListener('click', (e) => {
             e.preventDefault();
-            groupToggle.classList.toggle('collapsed');
-            document.getElementById('fleetSubmenu').classList.toggle('open');
+            e.stopPropagation();
+            const submenu = document.getElementById('fleetSubmenu');
+            const isOpen = submenu.classList.contains('open');
+            if (isOpen) {
+                submenu.classList.remove('open');
+                groupToggle.classList.add('collapsed');
+            } else {
+                submenu.classList.add('open');
+                groupToggle.classList.remove('collapsed');
+            }
         });
     }
 }
