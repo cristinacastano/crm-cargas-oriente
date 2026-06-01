@@ -287,8 +287,8 @@ function openVehicleForm() {
                 <div class="form-group"><label>Línea *</label><input type="text" placeholder="T800"></div>
                 <div class="form-group"><label>Modelo (Año) *</label><input type="number" placeholder="2024"></div>
                 <div class="form-group"><label>Color *</label><input type="text" placeholder="Blanco"></div>
-                <div class="form-group"><label>Tipo Carrocería *</label><select><option>Seleccionar...</option><option>Estaca</option><option>Plataforma</option><option>Basculante (Volqueta)</option><option>Tauliner</option><option>Cisterna</option></select></div>
-                <div class="form-group"><label>Tipo Vehículo *</label><select><option>Seleccionar...</option><option>Vehículo Ligero</option><option>Camión Rígido</option><option>Tractomula</option><option>Especializado</option></select></div>
+                <div class="form-group"><label>Tipo Carrocería *</label><select><option>Seleccionar...</option><option>Estacas</option><option>Furgón</option><option>Planchón / Plataforma</option><option>Volqueta (Basculante)</option><option>Cisterna / Tanque</option><option>Tauliner (Cortinero)</option><option>Refrigerado</option><option>Cama Baja</option><option>Contenedor</option></select></div>
+                <div class="form-group"><label>Tipo Vehículo *</label><select><option>Seleccionar...</option><option>Turbo (C2 liviano - hasta 8 ton)</option><option>Camión Sencillo C2 (2 ejes - 17 ton)</option><option>Dobletroque C3 (3 ejes - 28 ton)</option><option>Minimula C2S1 (3 ejes - 27 ton)</option><option>Tractomula C3S2 (5 ejes - 40.5 ton)</option><option>Tractomula C3S3 (6 ejes - 48 ton)</option><option>Camioneta / Furgoneta (hasta 3.5 ton)</option></select></div>
                 <div class="form-group"><label>Cilindraje (cm³) *</label><input type="number" placeholder="15000"></div>
                 <div class="form-group"><label>Potencia (HP)</label><input type="number" placeholder="450"></div>
                 <div class="form-group"><label>Número Motor *</label><input type="text" placeholder="ABC123456"></div>
