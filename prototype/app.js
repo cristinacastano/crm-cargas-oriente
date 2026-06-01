@@ -283,7 +283,7 @@ function openVehicleForm() {
             <div class="form-grid">
                 <div class="form-group"><label>Placa Tránsito *</label><input type="text" placeholder="ABC-123"></div>
                 <div class="form-group"><label>Placa Interna</label><input type="text" placeholder="V-001"></div>
-                <div class="form-group"><label>Marca *</label><select><option>Seleccionar...</option><option>Kenworth</option><option>International</option><option>Chevrolet</option><option>Freightliner</option></select></div>
+                <div class="form-group"><label>Marca *</label><select><option>Seleccionar...</option><optgroup label="Carga Pesada"><option>Kenworth</option><option>International</option><option>Freightliner</option><option>Mack</option><option>Volvo</option><option>Scania</option><option>Mercedes-Benz</option><option>DAF</option><option>MAN</option></optgroup><optgroup label="Carga Media / Turbo"><option>Chevrolet</option><option>Hino</option><option>JAC</option><option>Foton</option><option>JMC</option><option>Hyundai</option><option>Mitsubishi Fuso</option><option>Dongfeng</option></optgroup><optgroup label="Carga Liviana"><option>Toyota</option><option>Nissan</option><option>Ford</option><option>Kia</option></optgroup></select></div>
                 <div class="form-group"><label>Línea *</label><input type="text" placeholder="T800"></div>
                 <div class="form-group"><label>Modelo (Año) *</label><input type="number" placeholder="2024"></div>
                 <div class="form-group"><label>Color *</label><input type="text" placeholder="Blanco"></div>
