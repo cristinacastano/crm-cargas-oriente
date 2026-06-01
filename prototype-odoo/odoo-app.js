@@ -306,6 +306,7 @@ function loadClientKanban() {
 }
 
 function openClientForm() {
+    const deptoOptions = Object.keys(DEPARTAMENTOS_MUNICIPIOS).map(d => `<option value="${d}">${d}</option>`).join('');
     openModal('Nuevo Cliente', `
         <div class="o-form-view">
             <div class="o-group">
@@ -315,7 +316,9 @@ function openClientForm() {
                     <div class="o-field-row"><span class="o-field-label">DV</span><span class="o-field-value"><input placeholder="7" style="width:50px;"></span></div>
                     <div class="o-field-row"><span class="o-field-label">Razón Social</span><span class="o-field-value"><input placeholder="Empresa S.A.S."></span></div>
                     <div class="o-field-row"><span class="o-field-label">Dirección</span><span class="o-field-value"><input placeholder="Calle 10 #20-30"></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Ciudad</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Medellín</option><option>Bogotá</option><option>Rionegro</option></select></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Departamento</span><span class="o-field-value"><select id="deptoSelect" onchange="updateCiudades()"><option value="">Seleccionar...</option>${deptoOptions}</select></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Ciudad / Municipio</span><span class="o-field-value"><select id="ciudadSelect"><option value="">Primero seleccione departamento</option></select></span></div>
+                    <div class="o-field-row"><span class="o-field-label">País</span><span class="o-field-value"><select><option>Colombia</option></select></span></div>
                 </div>
                 <div>
                     <div class="o-field-row"><span class="o-field-label">Contacto</span><span class="o-field-value"><input placeholder="Nombre completo"></span></div>
@@ -323,11 +326,24 @@ function openClientForm() {
                     <div class="o-field-row"><span class="o-field-label">Teléfono</span><span class="o-field-value"><input placeholder="(4) 123 4567"></span></div>
                     <div class="o-field-row"><span class="o-field-label">Celular</span><span class="o-field-value"><input placeholder="300 123 4567"></span></div>
                     <div class="o-field-row"><span class="o-field-label">Correo</span><span class="o-field-value"><input type="email" placeholder="contacto@empresa.com"></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Condición Pago</span><span class="o-field-value"><select><option>30 días</option><option>45 días</option><option>Contado</option></select></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Condición Pago</span><span class="o-field-value"><select><option>30 días</option><option>45 días</option><option>60 días</option><option>Contado</option></select></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Latitud</span><span class="o-field-value"><input placeholder="6.2442"></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Longitud</span><span class="o-field-value"><input placeholder="-75.5812"></span></div>
                 </div>
             </div>
         </div>
     `, `<button class="o-btn o-btn-secondary" onclick="closeModal()">Descartar</button><button class="o-btn o-btn-primary" onclick="closeModal()">Guardar</button>`);
+}
+
+function updateCiudades() {
+    const depto = document.getElementById('deptoSelect').value;
+    const ciudadSelect = document.getElementById('ciudadSelect');
+    ciudadSelect.innerHTML = '<option value="">Seleccionar...</option>';
+    if (depto && DEPARTAMENTOS_MUNICIPIOS[depto]) {
+        DEPARTAMENTOS_MUNICIPIOS[depto].forEach(ciudad => {
+            ciudadSelect.innerHTML += `<option value="${ciudad}">${ciudad}</option>`;
+        });
+    }
 }
 
 function openClientDetail() {
