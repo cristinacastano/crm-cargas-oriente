@@ -373,78 +373,160 @@ function vehicleFormView() {
     <div class="o-control-panel">
         <div class="o-cp-left">
             <span class="o-breadcrumb">
-                <span class="parent" onclick="loadView('vehicles')">Vehículos</span>
+                <span class="parent" onclick="loadView('vehicles')">Veh&iacute;culos</span>
                 <span class="separator">/</span>
                 ABC-123
             </span>
+            <button class="o-btn o-btn-icon" title="Guardar manualmente"><i class="fas fa-save"></i></button>
+            <button class="o-btn o-btn-icon" title="Descartar"><i class="fas fa-undo"></i></button>
         </div>
         <div class="o-cp-right">
-            <button class="o-btn o-btn-secondary"><i class="fas fa-edit"></i> Editar</button>
-            <div class="o-pager"><button><i class="fas fa-chevron-left"></i></button><span>1 / 4</span><button><i class="fas fa-chevron-right"></i></button></div>
+            <button class="o-btn o-btn-secondary"><i class="fas fa-print"></i></button>
+            <button class="o-btn o-btn-secondary"><i class="fas fa-cog"></i></button>
+            <div class="o-pager"><button><i class="fas fa-chevron-left"></i></button><span>1 / 8</span><button><i class="fas fa-chevron-right"></i></button></div>
         </div>
     </div>
-    <div class="o-form-view">
-        <div class="o-form-statusbar">
-            <div class="o-statusbar-buttons">
-                <button class="o-btn o-btn-primary">Programar Mantenimiento</button>
-            </div>
-            <div class="o-statusbar-status">
-                <span class="o-status-pill done">Activo</span>
-                <span class="o-status-pill">En Mantenimiento</span>
-                <span class="o-status-pill">Fuera de Servicio</span>
-                <span class="o-status-pill">Retirado</span>
-            </div>
-        </div>
-        <div class="o-form-sheet">
-            <div class="o-group">
-                <div>
-                    <div class="o-field-row"><span class="o-field-label">Placa Tránsito</span><span class="o-field-value"><input value="ABC-123" readonly></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Placa Interna</span><span class="o-field-value"><input value="V-001" readonly></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Marca / Línea</span><span class="o-field-value"><input value="Kenworth T800" readonly></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Modelo</span><span class="o-field-value"><input value="2022" readonly></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Color</span><span class="o-field-value"><input value="Blanco" readonly></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Tipo Carrocería</span><span class="o-field-value"><input value="Plataforma" readonly></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Tipo Vehículo</span><span class="o-field-value"><input value="Tractomula" readonly></span></div>
+    <div class="o-form-view" style="display:flex;gap:0;">
+        <div style="flex:1;overflow-y:auto;">
+            <!-- Status Bar -->
+            <div class="o-form-statusbar">
+                <div class="o-statusbar-buttons">
+                    <button class="o-btn o-btn-primary">Estado normal</button>
+                    <button class="o-btn o-btn-secondary">Registrar una ruta</button>
+                    <button class="o-btn o-btn-secondary">Archivar</button>
                 </div>
-                <div>
-                    <div class="o-field-row"><span class="o-field-label">VIN</span><span class="o-field-value"><input value="1HGBH41JXMN109186" readonly></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Nro. Motor</span><span class="o-field-value"><input value="ISX15-2022-78456" readonly></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Nro. Chasis</span><span class="o-field-value"><input value="KW-T800-2022-1234" readonly></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Conductor</span><span class="o-field-value" style="color:var(--o-brand);font-weight:500;">Juan Pérez</span></div>
-                    <div class="o-field-row"><span class="o-field-label">Kilometraje</span><span class="o-field-value"><input value="185,420 km" readonly></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Empresa</span><span class="o-field-value"><input value="Cargas del Oriente S.A." readonly></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Financiación</span><span class="o-field-value"><input value="Leasing" readonly></span></div>
+                <div class="o-statusbar-status">
+                    <span class="o-status-pill done">Nueva solicitud</span>
+                    <span class="o-status-pill done">Por ordenar</span>
+                    <span class="o-status-pill active">Registrado</span>
+                    <span class="o-status-pill">Degradado</span>
                 </div>
             </div>
-            <div class="o-notebook">
-                <div class="o-notebook-tabs">
-                    <span class="o-notebook-tab active">Documentos</span>
-                    <span class="o-notebook-tab">Datos Técnicos</span>
-                    <span class="o-notebook-tab">Propiedad</span>
-                    <span class="o-notebook-tab">Mantenimiento</span>
-                    <span class="o-notebook-tab">Multas</span>
-                    <span class="o-notebook-tab">Costos</span>
+
+            <div class="o-form-sheet">
+                <!-- Header: Modelo + Foto -->
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+                    <div style="flex:1;">
+                        <div style="font-size:11px;color:#6c757d;margin-bottom:2px;">Modelo</div>
+                        <div style="font-size:22px;font-weight:600;color:#212529;">Kenworth T800</div>
+                        <div style="margin-top:6px;">
+                            <div class="o-field-row"><span class="o-field-label">Matr&iacute;cula</span><span class="o-field-value"><input value="ABC-123" style="font-weight:600;"></span></div>
+                            <div class="o-field-row"><span class="o-field-label">Etiquetas</span><span class="o-field-value"><span class="o-badge-status o-badge-success" style="font-size:11px;">Tractomula</span> <span class="o-badge-status o-badge-info" style="font-size:11px;">C3S2</span></span></div>
+                        </div>
+                    </div>
+                    <div style="width:90px;height:90px;border:1px solid #dee2e6;border-radius:4px;display:flex;align-items:center;justify-content:center;background:#f8f9fa;">
+                        <i class="fas fa-truck" style="font-size:36px;color:#adb5bd;"></i>
+                    </div>
                 </div>
-                <div class="o-notebook-content">
-                    <div class="o-inline-list">
-                        <table>
-                            <thead><tr><th>Documento</th><th>Número</th><th>Aseguradora</th><th>Expedición</th><th>Vencimiento</th><th>Estado</th></tr></thead>
-                            <tbody>
-                                <tr><td>SOAT</td><td>POL-2024-5678</td><td>Seguros Bolívar</td><td>25/05/2025</td><td>25/05/2026</td><td><span class="o-badge-status o-badge-danger">Vencido</span></td></tr>
-                                <tr><td>Tecnomecánica</td><td>TM-2024-1234</td><td>—</td><td>15/12/2025</td><td>15/12/2026</td><td><span class="o-badge-status o-badge-success">Vigente</span></td></tr>
-                                <tr><td>Seguro Contractual</td><td>SC-2024-9012</td><td>Sura</td><td>01/01/2026</td><td>30/09/2026</td><td><span class="o-badge-status o-badge-success">Vigente</span></td></tr>
-                                <tr><td>Tarjeta de Propiedad</td><td>TP-ANT-45678</td><td>—</td><td>10/03/2022</td><td>N/A</td><td><span class="o-badge-status o-badge-success">Vigente</span></td></tr>
-                            </tbody>
-                        </table>
-                        <div class="o-add-line"><i class="fas fa-plus"></i> Agregar documento</div>
+
+                <!-- Notebook Tabs -->
+                <div class="o-notebook">
+                    <div class="o-notebook-tabs">
+                        <span class="o-notebook-tab active">Registro del Veh&iacute;culo</span>
+                        <span class="o-notebook-tab">Informaci&oacute;n Operativa</span>
+                        <span class="o-notebook-tab">Gastos/Documentos y Mantenimiento</span>
+                        <span class="o-notebook-tab">Multas de tr&aacute;nsito</span>
+                    </div>
+                    <div class="o-notebook-content">
+
+                        <!-- DATOS DE IDENTIFICACIÓN -->
+                        <h5 style="font-size:13px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:1px solid #dee2e6;padding-bottom:6px;margin:16px 0 10px;">Datos de Identificaci&oacute;n</h5>
+                        <div class="o-group">
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Placa Interna</span><span class="o-field-value"><input value="V-001"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Marca</span><span class="o-field-value"><input value="Kenworth"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">L&iacute;nea</span><span class="o-field-value"><input value="T800"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Modelo (A&ntilde;o)</span><span class="o-field-value"><input value="2022"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Color</span><span class="o-field-value"><input value="Blanco"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Tipo de carrocer&iacute;a</span><span class="o-field-value"><input value="Plataforma"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Tipo de veh&iacute;culo</span><span class="o-field-value"><input value="Tractomula C3S2 (5 ejes)"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Repotenciado</span><span class="o-field-value"><input type="checkbox"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Km Inicio</span><span class="o-field-value"><input value="0"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Activo Fijo</span><span class="o-field-value"><input value=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Compa&ntilde;&iacute;a</span><span class="o-field-value"><input value="Cargas del Oriente S.A." readonly></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Financiaci&oacute;n</span><span class="o-field-value"><select><option selected>Leasing</option><option>Recursos Propios</option><option>Permuta</option></select></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Estado operativo</span><span class="o-field-value"><span style="color:var(--o-success);font-weight:500;">Activo</span></span></div>
+                            </div>
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Fecha de la orden</span><span class="o-field-value"><input value=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Fecha de registro</span><span class="o-field-value"><input value="2 abr jun" type="text"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Fecha de cancelaci&oacute;n</span><span class="o-field-value"><input value=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Cilindraje (cm&sup3;)</span><span class="o-field-value"><input value="15000" type="number"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Potencia (kW)</span><span class="o-field-value"><input value="0.00" type="number" step="0.01"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">N&uacute;mero de motor</span><span class="o-field-value"><input value="ISX15-2022-78456"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">N&uacute;mero de chasis</span><span class="o-field-value"><input value="KW-T800-2022-1234"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">N&uacute;mero de flota o NIF</span><span class="o-field-value"><input value="1"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Balance de la flotilla</span><span class="o-field-value"><input value=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Ubicaci&oacute;n</span><span class="o-field-value"><select><option selected>Guarne</option><option>Rionegro</option><option>Marinilla</option><option>Sonson</option></select></span></div>
+                            </div>
+                        </div>
+
+                        <!-- DATOS TÉCNICOS EN CARGA -->
+                        <h5 style="font-size:13px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:1px solid #dee2e6;padding-bottom:6px;margin:20px 0 10px;">Datos T&eacute;cnicos en Carga</h5>
+                        <div class="o-group">
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">M&aacute;ximo volumen (m&sup3;)</span><span class="o-field-value"><input value="0.00" type="number" step="0.01"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Velocidad m&aacute;xima</span><span class="o-field-value"><input value="120" type="number"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Capacidad de carga (ton)</span><span class="o-field-value"><input value="0.00" type="number" step="0.01"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Peso bruto veh&iacute;culo (ton)</span><span class="o-field-value"><input value="0.00" type="number" step="0.01"></span></div>
+                            </div>
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">N&uacute;mero de ejes</span><span class="o-field-value"><input value="5" type="number"></span></div>
+                            </div>
+                        </div>
+
+                        <!-- DATOS LEGALES Y DE PROPIEDAD -->
+                        <h5 style="font-size:13px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:1px solid #dee2e6;padding-bottom:6px;margin:20px 0 10px;">Datos Legales y de Propiedad</h5>
+                        <div class="o-group">
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Propietario</span><span class="o-field-value"><input value="" placeholder="Nombre propietario"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">C&oacute;digo RUNT propietario</span><span class="o-field-value"><input value=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Servicio</span><span class="o-field-value"><select><option>P&uacute;blico</option><option selected>Particular</option></select></span></div>
+                            </div>
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Tarjeta de propiedad</span><span class="o-field-value"><input value=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Fecha tarjeta propiedad</span><span class="o-field-value"><input type="date"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Organismo de tr&aacute;nsito</span><span class="o-field-value"><input value="" placeholder="Departamento de tr&aacute;nsito"></span></div>
+                            </div>
+                        </div>
+
+                        <!-- DESTINACIONES -->
+                        <h5 style="font-size:13px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:1px solid #dee2e6;padding-bottom:6px;margin:20px 0 10px;">Destinaciones</h5>
+                        <div class="o-inline-list">
+                            <table>
+                                <thead><tr><th>Ruta</th><th>Cliente</th><th>Frecuencia</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Guarne &rarr; Rionegro-Tanque</td><td>ISAGEN</td><td>Diaria</td></tr>
+                                    <tr><td>Marinilla &rarr; Bogot&aacute;</td><td>Peldar</td><td>Semanal</td></tr>
+                                </tbody>
+                            </table>
+                            <div class="o-add-line"><i class="fas fa-plus"></i> Agregar una l&iacute;nea</div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <div class="o-chatter">
-                <div class="o-chatter-title">Historial</div>
-                <div class="o-log-item"><div class="o-log-avatar">CA</div><div class="o-log-content"><strong>Cristina A.</strong> actualizó el kilometraje: 184,200 â†' 185,420<br><span class="o-log-date">Hace 2 días</span></div></div>
-                <div class="o-log-item"><div class="o-log-avatar">AT</div><div class="o-log-content"><strong>Andrés T.</strong> creó el registro del Vehículo<br><span class="o-log-date">15/01/2026</span></div></div>
+        </div>
+
+        <!-- CHATTER (Panel derecho) -->
+        <div class="o-chatter" style="width:320px;border-left:1px solid #dee2e6;padding:16px;background:#fafafa;">
+            <div style="display:flex;gap:8px;margin-bottom:12px;">
+                <button class="o-btn o-btn-secondary" style="font-size:11px;padding:4px 10px;"><i class="fas fa-envelope"></i> Enviar mensaje</button>
+                <button class="o-btn o-btn-secondary" style="font-size:11px;padding:4px 10px;"><i class="fas fa-sticky-note"></i> Nota</button>
+                <button class="o-btn o-btn-secondary" style="font-size:11px;padding:4px 10px;"><i class="fas fa-calendar"></i> Actividad</button>
             </div>
+
+            <div style="border-bottom:1px solid #dee2e6;padding-bottom:10px;margin-bottom:12px;">
+                <div style="font-size:11px;color:#6c757d;margin-bottom:6px;font-weight:600;">INFORMACI&Oacute;N</div>
+                <div class="o-field-row" style="margin-bottom:4px;"><span class="o-field-label" style="font-size:11px;">Manual de conductor</span><span class="o-field-value" style="font-size:11px;"><i class="fas fa-file-pdf" style="color:var(--o-danger);"></i> Manual_KW_T800.pdf</span></div>
+                <div class="o-field-row" style="margin-bottom:4px;"><span class="o-field-label" style="font-size:11px;">Conductor</span><span class="o-field-value" style="font-size:11px;color:var(--o-brand);">Juan P&eacute;rez</span></div>
+                <div class="o-field-row" style="margin-bottom:4px;"><span class="o-field-label" style="font-size:11px;">Servicio</span><span class="o-field-value" style="font-size:11px;">Pr&oacute;ximo: 200,000 km</span></div>
+                <div class="o-field-row" style="margin-bottom:4px;"><span class="o-field-label" style="font-size:11px;">Fijar el modelo</span><span class="o-field-value" style="font-size:11px;"><i class="fas fa-star" style="color:#ffc107;"></i></span></div>
+            </div>
+
+            <div class="o-chatter-title" style="font-size:12px;font-weight:600;margin-bottom:8px;">Historial</div>
+            <div class="o-log-item"><div class="o-log-avatar">CA</div><div class="o-log-content"><strong>Cristina A.</strong> actualiz&oacute; el kilometraje: 184,200 &rarr; 185,420<br><span class="o-log-date">Hace 2 d&iacute;as</span></div></div>
+            <div class="o-log-item"><div class="o-log-avatar">SIS</div><div class="o-log-content"><strong>ADMINISTRADOR</strong> &middot; Admin<br>Creado un nuevo registro.<br><span class="o-log-date">15/01/2026</span></div></div>
         </div>
     </div>`;
 }
