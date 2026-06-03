@@ -706,3 +706,286 @@ body {
     .o-submenu { padding: 0 8px; }
     .o-submenu-item { padding: 10px 10px; font-size: 12px; }
 }
+
+/* ===== Dashboard Styles ===== */
+.o-dashboard {
+    padding: 24px;
+    max-width: 1400px;
+}
+
+.o-dashboard h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--o-text);
+    margin-bottom: 4px;
+}
+
+.o-dashboard .subtitle {
+    font-size: 13px;
+    color: var(--o-text-muted);
+    margin-bottom: 24px;
+}
+
+.o-dashboard-section {
+    margin-bottom: 28px;
+}
+
+.o-dashboard-section h4 {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--o-text-muted);
+    margin-bottom: 12px;
+}
+
+.o-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+}
+
+.o-kpi-card {
+    background: var(--o-white);
+    border: 1px solid var(--o-border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: box-shadow 0.2s, transform 0.2s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.o-kpi-card:hover {
+    box-shadow: var(--o-shadow-lg);
+    transform: translateY(-2px);
+}
+
+.o-kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+}
+
+.o-kpi-card.red::before { background: var(--o-danger); }
+.o-kpi-card.yellow::before { background: var(--o-warning); }
+.o-kpi-card.green::before { background: var(--o-success); }
+.o-kpi-card.blue::before { background: var(--o-info); }
+.o-kpi-card.orange::before { background: var(--o-action); }
+
+.o-kpi-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.o-kpi-icon.red { background: #FDE8E8; color: var(--o-danger); }
+.o-kpi-icon.yellow { background: #FEF3CD; color: #856404; }
+.o-kpi-icon.green { background: #D4EDDA; color: #155724; }
+.o-kpi-icon.blue { background: #D1ECF1; color: #0C5460; }
+.o-kpi-icon.orange { background: #FFE8CC; color: var(--o-action); }
+
+.o-kpi-info { flex: 1; }
+
+.o-kpi-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--o-text);
+    line-height: 1.1;
+}
+
+.o-kpi-label {
+    font-size: 12px;
+    color: var(--o-text-muted);
+    margin-top: 2px;
+}
+
+.o-kpi-sublabel {
+    font-size: 11px;
+    color: var(--o-text-light);
+}
+
+/* Dashboard alerts */
+.o-alert-feed {
+    background: var(--o-white);
+    border: 1px solid var(--o-border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.o-alert-feed-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #F5F5F5;
+    font-size: 13px;
+    transition: background 0.15s;
+}
+
+.o-alert-feed-item:hover { background: #FAFAFA; }
+.o-alert-feed-item:last-child { border-bottom: none; }
+
+.o-alert-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.o-alert-dot.red { background: var(--o-danger); }
+.o-alert-dot.yellow { background: var(--o-warning); }
+.o-alert-dot.green { background: var(--o-success); }
+
+.o-alert-text { flex: 1; }
+.o-alert-text strong { font-weight: 600; }
+.o-alert-date { font-size: 11px; color: var(--o-text-light); }
+
+/* Dashboard two columns */
+.o-dashboard-cols {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 900px) {
+    .o-dashboard-cols { grid-template-columns: 1fr; }
+}
+
+/* ===== Kanban Vehicle Cards (improved) ===== */
+.o-vehicle-kanban {
+    padding: 16px 20px;
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    align-items: flex-start;
+}
+
+.o-kanban-column {
+    min-width: 260px;
+    max-width: 300px;
+    flex-shrink: 0;
+}
+
+.o-kanban-column-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--o-text);
+}
+
+.o-kanban-column-header .count {
+    background: var(--o-bg);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    color: var(--o-text-muted);
+}
+
+.o-kanban-column-bar {
+    height: 3px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+}
+
+.o-kanban-column-bar.green { background: var(--o-success); }
+.o-kanban-column-bar.blue { background: var(--o-info); }
+.o-kanban-column-bar.orange { background: var(--o-warning); }
+.o-kanban-column-bar.red { background: var(--o-danger); }
+
+.o-vehicle-card {
+    background: var(--o-white);
+    border: 1px solid var(--o-border);
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+
+.o-vehicle-card:hover {
+    box-shadow: var(--o-shadow-lg);
+}
+
+.o-vehicle-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.o-vehicle-plate {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--o-text);
+}
+
+.o-vehicle-plate small {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--o-text-light);
+    display: block;
+}
+
+.o-vehicle-card-body {
+    font-size: 12px;
+    color: var(--o-text-muted);
+    line-height: 1.7;
+}
+
+.o-vehicle-card-body .driver {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.o-vehicle-card-body .driver-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--o-action);
+    color: white;
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.o-vehicle-docs {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.o-vehicle-doc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 600;
+    background: #F0F0F0;
+}
+
+.o-vehicle-doc-badge.ok { background: #D4EDDA; color: #155724; }
+.o-vehicle-doc-badge.warn { background: #FFF3CD; color: #856404; }
+.o-vehicle-doc-badge.expired { background: #F8D7DA; color: #721C24; }
