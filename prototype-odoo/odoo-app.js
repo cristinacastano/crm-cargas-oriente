@@ -633,9 +633,67 @@ function vehicleNewFormView() {
                         </div>
                     </div>
 
-                    <!-- TAB: Multas (placeholder) -->
+                    <!-- TAB: Multas -->
                     <div class="o-notebook-content o-tab-content" id="vn-multas" style="display:none;">
-                        <p style="color:#6c757d;font-size:13px;padding:20px 0;">Contenido de Multas de tr&aacute;nsito se mostrar&aacute; aqu&iacute;.</p>
+                        <!-- Resumen y botón crear -->
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                            <div style="display:flex;gap:8px;">
+                                <span style="font-size:11px;padding:4px 10px;border-radius:12px;background:#dc3545;color:#fff;cursor:pointer;">Vencidas (1)</span>
+                                <span style="font-size:11px;padding:4px 10px;border-radius:12px;background:#ffc107;color:#212529;cursor:pointer;">Pendientes (1)</span>
+                                <span style="font-size:11px;padding:4px 10px;border-radius:12px;background:#28a745;color:#fff;cursor:pointer;">Pagadas (1)</span>
+                            </div>
+                            <button class="o-btn o-btn-primary" style="font-size:12px;padding:6px 12px;" onclick="openFineForm()"><i class="fas fa-plus"></i> Registrar Multa</button>
+                        </div>
+
+                        <!-- Tabla de multas del vehículo -->
+                        <div class="o-list-view">
+                            <table>
+                                <thead><tr><th>Comparendo</th><th>Fecha</th><th>Conductor</th><th>Infracci&oacute;n</th><th>Gravedad</th><th>Valor</th><th>Vencimiento</th><th>Responsable</th><th>Estado</th></tr></thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>#45678</strong></td>
+                                        <td>15/04/2026</td>
+                                        <td>Juan P&eacute;rez</td>
+                                        <td>Exceso de velocidad</td>
+                                        <td><span style="color:#dc3545;font-weight:600;">Grave</span></td>
+                                        <td><strong>$850,000</strong></td>
+                                        <td style="color:#dc3545;font-weight:600;">01/06/2026</td>
+                                        <td>Empresa</td>
+                                        <td><span class="o-badge-status o-badge-danger">Vencida</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>#46201</strong></td>
+                                        <td>22/05/2026</td>
+                                        <td>Juan P&eacute;rez</td>
+                                        <td>Pico y placa</td>
+                                        <td><span style="color:#ffc107;font-weight:600;">Leve</span></td>
+                                        <td><strong>$438,000</strong></td>
+                                        <td>22/07/2026</td>
+                                        <td>Conductor</td>
+                                        <td><span class="o-badge-status o-badge-warning">Pendiente</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>#44123</strong></td>
+                                        <td>10/02/2026</td>
+                                        <td>Juan P&eacute;rez</td>
+                                        <td>Documentaci&oacute;n</td>
+                                        <td><span style="color:#28a745;font-weight:600;">Leve</span></td>
+                                        <td><strong>$220,000</strong></td>
+                                        <td>10/04/2026</td>
+                                        <td>Empresa</td>
+                                        <td><span class="o-badge-status o-badge-success">Pagada</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Resumen financiero -->
+                        <div style="margin-top:16px;padding:12px 16px;background:#f8f9fa;border-radius:6px;display:flex;gap:24px;font-size:12px;">
+                            <div><span style="color:#6c757d;">Total multas:</span> <strong>3</strong></div>
+                            <div><span style="color:#6c757d;">Valor total:</span> <strong>$1,508,000</strong></div>
+                            <div><span style="color:#dc3545;">Pendiente pago:</span> <strong style="color:#dc3545;">$1,288,000</strong></div>
+                            <div><span style="color:#6c757d;">Pagado:</span> <strong style="color:#28a745;">$220,000</strong></div>
+                        </div>
                     </div>
                 </div>
             </div>
