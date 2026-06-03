@@ -1,4 +1,4 @@
-﻿// ===== Odoo-style CRM Logístico - Cargas del Oriente =====
+// ===== Odoo-style CRM Logístico - Cargas del Oriente =====
 
 document.addEventListener('DOMContentLoaded', () => {
     initMainMenu();
