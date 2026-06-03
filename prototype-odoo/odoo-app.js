@@ -364,20 +364,6 @@ function vehicleNewFormView() {
     </div>
     <div class="o-form-view" style="display:flex;gap:0;">
         <div style="flex:1;overflow-y:auto;">
-            <!-- Status Bar -->
-            <div class="o-form-statusbar">
-                <div class="o-statusbar-buttons">
-                    <button class="o-btn o-btn-primary">Estado normal</button>
-                    <button class="o-btn o-btn-secondary">Registrar una ruta</button>
-                    <button class="o-btn o-btn-secondary">Archivar</button>
-                </div>
-                <div class="o-statusbar-status">
-                    <span class="o-status-pill active">Nueva solicitud</span>
-                    <span class="o-status-pill">Por ordenar</span>
-                    <span class="o-status-pill">Registrado</span>
-                    <span class="o-status-pill">Degradado</span>
-                </div>
-            </div>
 
             <div class="o-form-sheet">
                 <!-- HEADER: Imagen + Info + KPIs -->
@@ -399,27 +385,6 @@ function vehicleNewFormView() {
                             <span style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:#495057;"><span style="width:8px;height:8px;border-radius:50%;background:#28a745;display:inline-block;"></span> Activo</span>
                             <span style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:#495057;"><i class="fas fa-truck" style="font-size:10px;"></i> Seleccionar tipo...</span>
                             <span style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:#495057;"><i class="fas fa-map-marker-alt" style="font-size:10px;"></i> Ubicaci&oacute;n</span>
-                        </div>
-                    </div>
-                    <!-- KPIs -->
-                    <div style="display:flex;gap:12px;flex-shrink:0;">
-                        <div style="text-align:center;padding:10px 16px;border:1px solid #e9ecef;border-radius:6px;min-width:90px;">
-                            <div style="margin-bottom:4px;"><i class="fas fa-tachometer-alt" style="font-size:18px;color:#495057;"></i></div>
-                            <div style="font-size:11px;color:#6c757d;">&Uacute;ltimo od&oacute;metro</div>
-                            <div style="font-size:18px;font-weight:700;color:#212529;">0 km</div>
-                            <div style="font-size:10px;color:#adb5bd;">&mdash;</div>
-                        </div>
-                        <div style="text-align:center;padding:10px 16px;border:1px solid #e9ecef;border-radius:6px;min-width:90px;">
-                            <div style="margin-bottom:4px;"><i class="fas fa-file-contract" style="font-size:18px;color:#495057;"></i></div>
-                            <div style="font-size:11px;color:#6c757d;">Contratos</div>
-                            <div style="font-size:18px;font-weight:700;color:#212529;">0</div>
-                            <div style="font-size:10px;color:#adb5bd;">Activos</div>
-                        </div>
-                        <div style="text-align:center;padding:10px 16px;border:1px solid #e9ecef;border-radius:6px;min-width:90px;">
-                            <div style="margin-bottom:4px;"><i class="fas fa-wrench" style="font-size:18px;color:#495057;"></i></div>
-                            <div style="font-size:11px;color:#6c757d;">Servicios</div>
-                            <div style="font-size:18px;font-weight:700;color:#212529;">0</div>
-                            <div style="font-size:10px;color:#adb5bd;">Pendientes</div>
                         </div>
                     </div>
                 </div>
@@ -542,20 +507,6 @@ function vehicleFormView() {
     </div>
     <div class="o-form-view" style="display:flex;gap:0;">
         <div style="flex:1;overflow-y:auto;">
-            <!-- Status Bar -->
-            <div class="o-form-statusbar">
-                <div class="o-statusbar-buttons">
-                    <button class="o-btn o-btn-primary">Estado normal</button>
-                    <button class="o-btn o-btn-secondary">Registrar una ruta</button>
-                    <button class="o-btn o-btn-secondary">Archivar</button>
-                </div>
-                <div class="o-statusbar-status">
-                    <span class="o-status-pill done">Nueva solicitud</span>
-                    <span class="o-status-pill done">Por ordenar</span>
-                    <span class="o-status-pill active">Registrado</span>
-                    <span class="o-status-pill">Degradado</span>
-                </div>
-            </div>
 
             <div class="o-form-sheet">
                 <!-- HEADER: Imagen + Info + KPIs -->
