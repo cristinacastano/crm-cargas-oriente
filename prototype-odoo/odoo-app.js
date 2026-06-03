@@ -60,6 +60,29 @@ function switchVehicleTab(el, tabId) {
     document.getElementById(tabId).style.display = 'block';
 }
 
+// Document Modal
+function openDocumentModal() {
+    openModal('Crear Documento', `
+        <div class="o-form-view">
+            <div class="o-group">
+                <div>
+                    <div class="o-field-row"><span class="o-field-label">Tipo</span><span class="o-field-value"><select><option>Seleccionar...</option><option>SOAT</option><option>Tecnomec&aacute;nica</option><option>Seguro Contractual</option><option>Tarjeta de Propiedad</option><option>P&oacute;liza RCE</option><option>Certificado Gases</option><option>Licencia de Tr&aacute;nsito</option></select></span></div>
+                    <div class="o-field-row"><span class="o-field-label">N&uacute;mero</span><span class="o-field-value"><input placeholder="N&uacute;mero del documento"></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Aseguradora / Entidad</span><span class="o-field-value"><input placeholder="Ej: Seguros Bol&iacute;var, CDA..."></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Valor / Prima</span><span class="o-field-value"><input type="number" placeholder="$0"></span></div>
+                </div>
+                <div>
+                    <div class="o-field-row"><span class="o-field-label">Fecha expedici&oacute;n</span><span class="o-field-value"><input type="date"></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Fecha vencimiento</span><span class="o-field-value"><input type="date"></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Alerta vencimiento</span><span class="o-field-value"><select><option>30 d&iacute;as antes</option><option>15 d&iacute;as antes</option><option>7 d&iacute;as antes</option></select></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Archivo adjunto</span><span class="o-field-value"><button class="o-btn o-btn-secondary" style="font-size:11px;padding:4px 10px;"><i class="fas fa-upload"></i> Subir archivo</button></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Responsable renovaci&oacute;n</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Cristina A.</option><option>Carlos R.</option></select></span></div>
+                </div>
+            </div>
+        </div>
+    `, '<button class="o-btn o-btn-primary" onclick="closeModal()">Guardar y cerrar</button><button class="o-btn o-btn-primary" onclick="closeModal()">Guardar y crear nuevo</button><button class="o-btn o-btn-secondary" onclick="closeModal()">Descartar</button>');
+}
+
 // ===== DASHBOARD VIEW =====
 function dashboardView() {
     return `
@@ -480,9 +503,134 @@ function vehicleNewFormView() {
                         </div>
                     </div>
 
-                    <!-- TAB: Documentos (placeholder) -->
+                    <!-- TAB: Documentos -->
                     <div class="o-notebook-content o-tab-content" id="vn-documentos" style="display:none;">
-                        <p style="color:#6c757d;font-size:13px;padding:20px 0;">Contenido de Gesti&oacute;n Documental y Vencimientos se mostrar&aacute; aqu&iacute;.</p>
+                        <!-- Filtros y botón crear -->
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                            <div style="display:flex;gap:8px;">
+                                <span style="font-size:11px;padding:4px 10px;border-radius:12px;background:#dc3545;color:#fff;cursor:pointer;">Vencidos (1)</span>
+                                <span style="font-size:11px;padding:4px 10px;border-radius:12px;background:#ffc107;color:#212529;cursor:pointer;">Por vencer (1)</span>
+                                <span style="font-size:11px;padding:4px 10px;border-radius:12px;background:#28a745;color:#fff;cursor:pointer;">Vigentes (4)</span>
+                            </div>
+                            <button class="o-btn o-btn-primary" style="font-size:12px;padding:6px 12px;" onclick="openDocumentModal()"><i class="fas fa-plus"></i> Crear Documento</button>
+                        </div>
+
+                        <!-- Tarjetas de documentos -->
+                        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;">
+                            <!-- SOAT - Vencido -->
+                            <div style="border:1px solid #dc3545;border-radius:6px;padding:14px;background:#fff;">
+                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                                    <strong style="font-size:13px;">SOAT</strong>
+                                    <span style="font-size:10px;padding:2px 8px;border-radius:10px;background:#dc3545;color:#fff;">Vencido</span>
+                                </div>
+                                <div style="font-size:12px;color:#495057;line-height:1.8;">
+                                    <div><i class="fas fa-hashtag" style="width:14px;color:#adb5bd;"></i> 3308005970133000</div>
+                                    <div><i class="fas fa-building" style="width:14px;color:#adb5bd;"></i> Seguros Bol&iacute;var</div>
+                                    <div><i class="fas fa-calendar" style="width:14px;color:#adb5bd;"></i> Venci&oacute;: <strong style="color:#dc3545;">25/05/2026</strong></div>
+                                    <div><i class="fas fa-exclamation-triangle" style="width:14px;color:#dc3545;"></i> <strong style="color:#dc3545;">Vencido hace 9 d&iacute;as</strong></div>
+                                </div>
+                                <div style="display:flex;gap:6px;margin-top:10px;border-top:1px solid #f1f1f1;padding-top:8px;">
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-paperclip"></i> Archivo</button>
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+
+                            <!-- Tecnomecánica - Por vencer -->
+                            <div style="border:1px solid #ffc107;border-radius:6px;padding:14px;background:#fff;">
+                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                                    <strong style="font-size:13px;">Tecnomec&aacute;nica</strong>
+                                    <span style="font-size:10px;padding:2px 8px;border-radius:10px;background:#ffc107;color:#212529;">Por vencer</span>
+                                </div>
+                                <div style="font-size:12px;color:#495057;line-height:1.8;">
+                                    <div><i class="fas fa-hashtag" style="width:14px;color:#adb5bd;"></i> 185543173</div>
+                                    <div><i class="fas fa-building" style="width:14px;color:#adb5bd;"></i> CDA Rionegro</div>
+                                    <div><i class="fas fa-calendar" style="width:14px;color:#adb5bd;"></i> Vence: <strong style="color:#ffc107;">27/06/2026</strong></div>
+                                    <div><i class="fas fa-clock" style="width:14px;color:#ffc107;"></i> <strong style="color:#856404;">Faltan 24 d&iacute;as</strong></div>
+                                </div>
+                                <div style="display:flex;gap:6px;margin-top:10px;border-top:1px solid #f1f1f1;padding-top:8px;">
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-paperclip"></i> Archivo</button>
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+
+                            <!-- Seguro Contractual - Vigente -->
+                            <div style="border:1px solid #28a745;border-radius:6px;padding:14px;background:#fff;">
+                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                                    <strong style="font-size:13px;">Seguro Contractual</strong>
+                                    <span style="font-size:10px;padding:2px 8px;border-radius:10px;background:#28a745;color:#fff;">Vigente</span>
+                                </div>
+                                <div style="font-size:12px;color:#495057;line-height:1.8;">
+                                    <div><i class="fas fa-hashtag" style="width:14px;color:#adb5bd;"></i> SC-2024-9012</div>
+                                    <div><i class="fas fa-building" style="width:14px;color:#adb5bd;"></i> Sura</div>
+                                    <div><i class="fas fa-calendar" style="width:14px;color:#adb5bd;"></i> Vence: 30/09/2026</div>
+                                    <div><i class="fas fa-check-circle" style="width:14px;color:#28a745;"></i> Faltan 119 d&iacute;as</div>
+                                </div>
+                                <div style="display:flex;gap:6px;margin-top:10px;border-top:1px solid #f1f1f1;padding-top:8px;">
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-paperclip"></i> Archivo</button>
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+
+                            <!-- Tarjeta de Propiedad - Vigente -->
+                            <div style="border:1px solid #28a745;border-radius:6px;padding:14px;background:#fff;">
+                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                                    <strong style="font-size:13px;">Tarjeta de Propiedad</strong>
+                                    <span style="font-size:10px;padding:2px 8px;border-radius:10px;background:#28a745;color:#fff;">Vigente</span>
+                                </div>
+                                <div style="font-size:12px;color:#495057;line-height:1.8;">
+                                    <div><i class="fas fa-hashtag" style="width:14px;color:#adb5bd;"></i> TP-ANT-45678</div>
+                                    <div><i class="fas fa-building" style="width:14px;color:#adb5bd;"></i> Tr&aacute;nsito Antioquia</div>
+                                    <div><i class="fas fa-calendar" style="width:14px;color:#adb5bd;"></i> No vence</div>
+                                    <div><i class="fas fa-check-circle" style="width:14px;color:#28a745;"></i> Permanente</div>
+                                </div>
+                                <div style="display:flex;gap:6px;margin-top:10px;border-top:1px solid #f1f1f1;padding-top:8px;">
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-paperclip"></i> Archivo</button>
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+
+                            <!-- Póliza RCE - Vigente -->
+                            <div style="border:1px solid #28a745;border-radius:6px;padding:14px;background:#fff;">
+                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                                    <strong style="font-size:13px;">P&oacute;liza RCE</strong>
+                                    <span style="font-size:10px;padding:2px 8px;border-radius:10px;background:#28a745;color:#fff;">Vigente</span>
+                                </div>
+                                <div style="font-size:12px;color:#495057;line-height:1.8;">
+                                    <div><i class="fas fa-hashtag" style="width:14px;color:#adb5bd;"></i> RCE-2026-001</div>
+                                    <div><i class="fas fa-building" style="width:14px;color:#adb5bd;"></i> Sura</div>
+                                    <div><i class="fas fa-calendar" style="width:14px;color:#adb5bd;"></i> Vence: 31/12/2026</div>
+                                    <div><i class="fas fa-check-circle" style="width:14px;color:#28a745;"></i> Faltan 211 d&iacute;as</div>
+                                </div>
+                                <div style="display:flex;gap:6px;margin-top:10px;border-top:1px solid #f1f1f1;padding-top:8px;">
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-paperclip"></i> Archivo</button>
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+
+                            <!-- Emisiones de Gases - Vigente -->
+                            <div style="border:1px solid #28a745;border-radius:6px;padding:14px;background:#fff;">
+                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                                    <strong style="font-size:13px;">Certificado Gases</strong>
+                                    <span style="font-size:10px;padding:2px 8px;border-radius:10px;background:#28a745;color:#fff;">Vigente</span>
+                                </div>
+                                <div style="font-size:12px;color:#495057;line-height:1.8;">
+                                    <div><i class="fas fa-hashtag" style="width:14px;color:#adb5bd;"></i> GAS-2026-789</div>
+                                    <div><i class="fas fa-building" style="width:14px;color:#adb5bd;"></i> CDA Rionegro</div>
+                                    <div><i class="fas fa-calendar" style="width:14px;color:#adb5bd;"></i> Vence: 15/12/2026</div>
+                                    <div><i class="fas fa-check-circle" style="width:14px;color:#28a745;"></i> Faltan 195 d&iacute;as</div>
+                                </div>
+                                <div style="display:flex;gap:6px;margin-top:10px;border-top:1px solid #f1f1f1;padding-top:8px;">
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-paperclip"></i> Archivo</button>
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- TAB: Multas (placeholder) -->
