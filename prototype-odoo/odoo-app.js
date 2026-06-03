@@ -470,61 +470,13 @@ function vehicleNewFormView() {
 
                     <!-- TAB: Operación -->
                     <div class="o-notebook-content o-tab-content" id="vn-operacion" style="display:none;">
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
-                            <!-- Col Izq: ASIGNACIÓN -->
-                            <div>
-                                <h5 style="font-size:13px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:2px solid #e9ecef;padding-bottom:6px;margin:0 0 12px;display:flex;align-items:center;gap:6px;"><i class="fas fa-user-check" style="color:#6c757d;"></i> Asignaci&oacute;n</h5>
-                                <div class="o-field-row"><span class="o-field-label">Empresa</span><span class="o-field-value"><input value="Cargas del Oriente S.A." readonly></span></div>
-                                <div class="o-field-row"><span class="o-field-label">Conductor</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Juan P&eacute;rez</option><option>Carlos L&oacute;pez</option><option>Andr&eacute;s R&iacute;os</option><option>Miguel Torres</option><option>Diego Parra</option><option>Luis G&oacute;mez</option></select></span></div>
-                                <div class="o-field-row"><span class="o-field-label">Pr&oacute;ximo conductor</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Juan P&eacute;rez</option><option>Carlos L&oacute;pez</option><option>Andr&eacute;s R&iacute;os</option></select></span></div>
-                                <div class="o-field-row"><span class="o-field-label">Fecha de asignaci&oacute;n</span><span class="o-field-value"><input type="date"></span></div>
-                                <div class="o-field-row"><span class="o-field-label">Trailer asignado</span><span class="o-field-value"><select><option>Ninguno</option><option>TR-001</option><option>TR-002</option><option>TR-003</option></select></span></div>
-                                <div class="o-field-row"><span class="o-field-label">Base operativa</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Guarne - Sede principal</option><option>Rionegro - Patio</option><option>Marinilla - Bodega</option></select></span></div>
-                                <div class="o-field-row"><span class="o-field-label">Disponibilidad</span><span class="o-field-value"><select><option selected>Disponible</option><option>Asignado</option><option>En taller</option><option>Fuera de servicio</option></select></span></div>
-                            </div>
-                            <!-- Col Der: RUTA Y OPERACIÓN -->
-                            <div>
-                                <h5 style="font-size:13px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:2px solid #e9ecef;padding-bottom:6px;margin:0 0 12px;display:flex;align-items:center;gap:6px;"><i class="fas fa-route" style="color:#6c757d;"></i> Ruta y Operaci&oacute;n</h5>
-                                <div class="o-field-row"><span class="o-field-label">Ruta habitual</span><span class="o-field-value"><select><option>Seleccionar...</option><option>R-001: Guarne &rarr; Rionegro</option><option>R-002: Sonson &rarr; Tocancip&aacute;</option><option>R-003: Marinilla &rarr; Bogot&aacute;</option></select></span></div>
-                                <div class="o-field-row"><span class="o-field-label">&Uacute;ltimo viaje</span><span class="o-field-value"><input placeholder="" readonly></span></div>
-                                <div class="o-field-row"><span class="o-field-label">Fecha &uacute;ltimo viaje</span><span class="o-field-value"><input type="date"></span></div>
-                                <div class="o-field-row"><span class="o-field-label">Total viajes (mes)</span><span class="o-field-value"><input type="number" value="0" readonly></span></div>
-                                <div class="o-field-row"><span class="o-field-label">Total viajes (a&ntilde;o)</span><span class="o-field-value"><input type="number" value="0" readonly></span></div>
-                            </div>
-                        </div>
-
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px;">
-                            <!-- Col Izq: KILOMETRAJE -->
-                            <div>
-                                <h5 style="font-size:13px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:2px solid #e9ecef;padding-bottom:6px;margin:0 0 12px;display:flex;align-items:center;gap:6px;"><i class="fas fa-tachometer-alt" style="color:#6c757d;"></i> Kilometraje</h5>
-                                <div class="o-field-row"><span class="o-field-label">Kilometraje actual</span><span class="o-field-value"><input type="number" value="0" step="0.01"></span></div>
-                                <div class="o-field-row"><span class="o-field-label">Fecha ingreso kilometraje</span><span class="o-field-value"><input type="date"></span></div>
-                                <div class="o-field-row"><span class="o-field-label">Promedio km/d&iacute;a</span><span class="o-field-value"><input type="number" value="0" readonly></span></div>
-                                <div class="o-field-row"><span class="o-field-label">Pr&oacute;ximo servicio (km)</span><span class="o-field-value"><input type="number" placeholder="0"></span></div>
-                            </div>
-                            <!-- Col Der: COMBUSTIBLE -->
-                            <div>
-                                <h5 style="font-size:13px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:2px solid #e9ecef;padding-bottom:6px;margin:0 0 12px;display:flex;align-items:center;gap:6px;"><i class="fas fa-gas-pump" style="color:#6c757d;"></i> Combustible</h5>
-                                <div class="o-field-row"><span class="o-field-label">Tipo combustible</span><span class="o-field-value"><select><option selected>ACPM (Di&eacute;sel)</option><option>Gasolina</option><option>Gas Natural</option><option>El&eacute;ctrico</option></select></span></div>
-                                <div class="o-field-row"><span class="o-field-label">Capacidad tanque (gal)</span><span class="o-field-value"><input type="number" placeholder="0"></span></div>
-                                <div class="o-field-row"><span class="o-field-label">Rendimiento (km/gal)</span><span class="o-field-value"><input type="number" step="0.1" placeholder="0.0"></span></div>
-                                <div class="o-field-row"><span class="o-field-label">Proveedor combustible</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Terpel</option><option>Primax</option><option>Biomax</option><option>Petrobras</option></select></span></div>
-                            </div>
-                        </div>
-
-                        <!-- GPS / TELEMETRÍA -->
-                        <div style="margin-top:20px;">
-                            <h5 style="font-size:13px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:2px solid #e9ecef;padding-bottom:6px;margin:0 0 12px;display:flex;align-items:center;gap:6px;"><i class="fas fa-satellite-dish" style="color:#6c757d;"></i> GPS / Telemetr&iacute;a</h5>
-                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
-                                <div>
-                                    <div class="o-field-row"><span class="o-field-label">ID dispositivo GPS</span><span class="o-field-value"><input placeholder=""></span></div>
-                                    <div class="o-field-row"><span class="o-field-label">Proveedor GPS</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Satrack</option><option>Ubiquiti</option><option>Geotab</option><option>Wialon</option></select></span></div>
-                                </div>
-                                <div>
-                                    <div class="o-field-row"><span class="o-field-label">Estado se&ntilde;al</span><span class="o-field-value"><select><option selected>Activa</option><option>Sin se&ntilde;al</option><option>Desconectado</option></select></span></div>
-                                    <div class="o-field-row"><span class="o-field-label">Fecha instalaci&oacute;n</span><span class="o-field-value"><input type="date"></span></div>
-                                </div>
-                            </div>
+                        <div style="max-width:500px;">
+                            <div class="o-field-row"><span class="o-field-label">Empresa</span><span class="o-field-value"><select><option selected>Cargas del Oriente S.A.</option></select></span></div>
+                            <div class="o-field-row"><span class="o-field-label">Conductor asignado</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Juan P&eacute;rez</option><option>Carlos L&oacute;pez</option><option>Andr&eacute;s R&iacute;os</option><option>Miguel Torres</option><option>Diego Parra</option><option>Luis G&oacute;mez</option></select></span></div>
+                            <div class="o-field-row"><span class="o-field-label">Fecha de asignaci&oacute;n</span><span class="o-field-value"><input type="date"></span></div>
+                            <h5 style="font-size:13px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:2px solid #e9ecef;padding-bottom:6px;margin:20px 0 12px;">Kilometraje</h5>
+                            <div class="o-field-row"><span class="o-field-label">Kilometraje actual</span><span class="o-field-value"><input type="number" value="0" step="0.01"></span></div>
+                            <div class="o-field-row"><span class="o-field-label">Fecha de ingreso</span><span class="o-field-value"><input type="date"></span></div>
                         </div>
                     </div>
 
