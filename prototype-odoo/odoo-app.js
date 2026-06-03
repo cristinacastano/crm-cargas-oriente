@@ -342,26 +342,161 @@ function loadVehiclesList() {
 
 
 function openVehicleForm() {
-    openModal('Nuevo Vehículo', `
-        <div class="o-form-view">
-            <div class="o-group">
-                <div><div class="o-field-row"><span class="o-field-label">Placa Tránsito</span><span class="o-field-value"><input placeholder="ABC-123"></span></div>
-                <div class="o-field-row"><span class="o-field-label">Placa Interna</span><span class="o-field-value"><input placeholder="V-001"></span></div>
-                <div class="o-field-row"><span class="o-field-label">Marca</span><span class="o-field-value"><select><option>Seleccionar...</option><optgroup label="Carga Pesada"><option>Kenworth</option><option>International</option><option>Freightliner</option><option>Mack</option><option>Volvo</option><option>Scania</option><option>Mercedes-Benz</option><option>DAF</option><option>MAN</option></optgroup><optgroup label="Carga Media / Turbo"><option>Chevrolet</option><option>Hino</option><option>JAC</option><option>Foton</option><option>JMC</option><option>Hyundai</option><option>Mitsubishi Fuso</option><option>Dongfeng</option></optgroup><optgroup label="Carga Liviana"><option>Toyota</option><option>Nissan</option><option>Ford</option><option>Kia</option></optgroup></select></span></div>
-                <div class="o-field-row"><span class="o-field-label">Línea</span><span class="o-field-value"><input placeholder="T800"></span></div>
-                <div class="o-field-row"><span class="o-field-label">Modelo (Año)</span><span class="o-field-value"><input type="number" placeholder="2024"></span></div>
-                <div class="o-field-row"><span class="o-field-label">Color</span><span class="o-field-value"><input placeholder="Blanco"></span></div>
-                <div class="o-field-row"><span class="o-field-label">Tipo Carrocería</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Estacas</option><option>Furgón</option><option>Planchón / Plataforma</option><option>Volqueta (Basculante)</option><option>Cisterna / Tanque</option><option>Tauliner (Cortinero)</option><option>Refrigerado</option><option>Cama Baja</option><option>Contenedor</option></select></span></div></div>
-                <div><div class="o-field-row"><span class="o-field-label">Tipo Vehículo</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Turbo (C2 liviano - hasta 8 ton)</option><option>Camión Sencillo C2 (2 ejes - 17 ton)</option><option>Dobletroque C3 (3 ejes - 28 ton)</option><option>Minimula C2S1 (3 ejes - 27 ton)</option><option>Tractomula C3S2 (5 ejes - 40.5 ton)</option><option>Tractomula C3S3 (6 ejes - 48 ton)</option><option>Camioneta / Furgoneta (hasta 3.5 ton)</option></select></span></div>
-                <div class="o-field-row"><span class="o-field-label">Cilindraje (cm³)</span><span class="o-field-value"><input type="number" placeholder="15000"></span></div>
-                <div class="o-field-row"><span class="o-field-label">Nro. Motor</span><span class="o-field-value"><input placeholder="ABC123456"></span></div>
-                <div class="o-field-row"><span class="o-field-label">Nro. Chasis</span><span class="o-field-value"><input placeholder="XYZ789012"></span></div>
-                <div class="o-field-row"><span class="o-field-label">VIN</span><span class="o-field-value"><input placeholder="1HGBH41JXMN109186"></span></div>
-                <div class="o-field-row"><span class="o-field-label">Financiación</span><span class="o-field-value"><select><option>Leasing</option><option>Recursos Propios</option><option>Permuta</option></select></span></div>
-                <div class="o-field-row"><span class="o-field-label">Estado</span><span class="o-field-value"><select><option>Activo</option><option>Inactivo</option><option>En Mantenimiento</option></select></span></div></div>
+    document.getElementById('mainContent').innerHTML = vehicleNewFormView();
+}
+
+function vehicleNewFormView() {
+    return `
+    <div class="o-control-panel">
+        <div class="o-cp-left">
+            <span class="o-breadcrumb">
+                <span class="parent" onclick="loadView('vehicles')">Veh&iacute;culos</span>
+                <span class="separator">/</span>
+                Nuevo
+            </span>
+            <button class="o-btn o-btn-icon" title="Guardar manualmente"><i class="fas fa-save"></i></button>
+            <button class="o-btn o-btn-icon" title="Descartar"><i class="fas fa-undo"></i></button>
+        </div>
+        <div class="o-cp-right">
+            <button class="o-btn o-btn-secondary"><i class="fas fa-print"></i></button>
+            <button class="o-btn o-btn-secondary"><i class="fas fa-cog"></i></button>
+        </div>
+    </div>
+    <div class="o-form-view" style="display:flex;gap:0;">
+        <div style="flex:1;overflow-y:auto;">
+            <!-- Status Bar -->
+            <div class="o-form-statusbar">
+                <div class="o-statusbar-buttons">
+                    <button class="o-btn o-btn-primary">Estado normal</button>
+                    <button class="o-btn o-btn-secondary">Registrar una ruta</button>
+                    <button class="o-btn o-btn-secondary">Archivar</button>
+                </div>
+                <div class="o-statusbar-status">
+                    <span class="o-status-pill active">Nueva solicitud</span>
+                    <span class="o-status-pill">Por ordenar</span>
+                    <span class="o-status-pill">Registrado</span>
+                    <span class="o-status-pill">Degradado</span>
+                </div>
+            </div>
+
+            <div class="o-form-sheet">
+                <!-- Header: Modelo + Foto -->
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+                    <div style="flex:1;">
+                        <div style="font-size:11px;color:#6c757d;margin-bottom:2px;">Modelo</div>
+                        <input style="font-size:22px;font-weight:600;color:#212529;border:none;border-bottom:1px solid #dee2e6;width:100%;max-width:400px;padding:4px 0;" placeholder="Por ejemplo, Modelo S">
+                        <div style="margin-top:8px;">
+                            <div class="o-field-row"><span class="o-field-label">Matr&iacute;cula</span><span class="o-field-value"><input placeholder="Por ejemplo, PAE 326"></span></div>
+                            <div class="o-field-row"><span class="o-field-label">Etiquetas</span><span class="o-field-value"><input placeholder="Agregar etiqueta..."></span></div>
+                        </div>
+                    </div>
+                    <div style="width:90px;height:90px;border:1px dashed #dee2e6;border-radius:4px;display:flex;align-items:center;justify-content:center;background:#f8f9fa;cursor:pointer;" title="Subir imagen">
+                        <i class="fas fa-camera" style="font-size:24px;color:#adb5bd;"></i>
+                    </div>
+                </div>
+
+                <!-- Notebook Tabs -->
+                <div class="o-notebook">
+                    <div class="o-notebook-tabs">
+                        <span class="o-notebook-tab active">Registro del Veh&iacute;culo</span>
+                        <span class="o-notebook-tab">Informaci&oacute;n Operativa</span>
+                        <span class="o-notebook-tab">Gastos/Documentos y Mantenimiento</span>
+                        <span class="o-notebook-tab">Multas de tr&aacute;nsito</span>
+                    </div>
+                    <div class="o-notebook-content">
+
+                        <!-- DATOS DE IDENTIFICACIÓN -->
+                        <h5 style="font-size:13px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:1px solid #dee2e6;padding-bottom:6px;margin:16px 0 10px;">Datos de Identificaci&oacute;n</h5>
+                        <div class="o-group">
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Placa Interna</span><span class="o-field-value"><input placeholder="V-001"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Marca</span><span class="o-field-value"><select><option>Seleccionar...</option><optgroup label="Carga Pesada"><option>Kenworth</option><option>International</option><option>Freightliner</option><option>Mack</option><option>Volvo</option><option>Scania</option><option>Mercedes-Benz</option><option>DAF</option><option>MAN</option></optgroup><optgroup label="Carga Media / Turbo"><option>Chevrolet</option><option>Hino</option><option>JAC</option><option>Foton</option><option>JMC</option><option>Hyundai</option><option>Mitsubishi Fuso</option><option>Dongfeng</option></optgroup><optgroup label="Carga Liviana"><option>Toyota</option><option>Nissan</option><option>Ford</option><option>Kia</option></optgroup></select></span></div>
+                                <div class="o-field-row"><span class="o-field-label">L&iacute;nea</span><span class="o-field-value"><input placeholder="T800"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Modelo (A&ntilde;o)</span><span class="o-field-value"><input type="number" placeholder="2024"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Color</span><span class="o-field-value"><input placeholder="Blanco"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Tipo de carrocer&iacute;a</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Estacas</option><option>Furg&oacute;n</option><option>Planch&oacute;n / Plataforma</option><option>Volqueta (Basculante)</option><option>Cisterna / Tanque</option><option>Tauliner (Cortinero)</option><option>Refrigerado</option><option>Cama Baja</option><option>Contenedor</option></select></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Tipo de veh&iacute;culo</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Turbo (C2 liviano - hasta 8 ton)</option><option>Cami&oacute;n Sencillo C2 (2 ejes - 17 ton)</option><option>Dobletroque C3 (3 ejes - 28 ton)</option><option>Minimula C2S1 (3 ejes - 27 ton)</option><option>Tractomula C3S2 (5 ejes - 40.5 ton)</option><option>Tractomula C3S3 (6 ejes - 48 ton)</option><option>Camioneta / Furgoneta (hasta 3.5 ton)</option></select></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Repotenciado</span><span class="o-field-value"><input type="checkbox"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Km Inicio</span><span class="o-field-value"><input value="0" type="number"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Activo Fijo</span><span class="o-field-value"><input placeholder=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Compa&ntilde;&iacute;a</span><span class="o-field-value"><input value="Cargas del Oriente S.A." readonly></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Financiaci&oacute;n</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Leasing</option><option>Recursos Propios</option><option>Permuta</option></select></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Estado operativo</span><span class="o-field-value"><select><option selected>Activo</option><option>Inactivo</option><option>En Mantenimiento</option></select></span></div>
+                            </div>
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Fecha de la orden</span><span class="o-field-value"><input type="date"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Fecha de registro</span><span class="o-field-value"><input type="date"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Fecha de cancelaci&oacute;n</span><span class="o-field-value"><input type="date"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Cilindraje (cm&sup3;)</span><span class="o-field-value"><input type="number" placeholder="15000"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Potencia (kW)</span><span class="o-field-value"><input type="number" step="0.01" placeholder="0.00"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">N&uacute;mero de motor</span><span class="o-field-value"><input placeholder=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">N&uacute;mero de chasis</span><span class="o-field-value"><input placeholder=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">N&uacute;mero de flota o NIF</span><span class="o-field-value"><input placeholder=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Balance de la flotilla</span><span class="o-field-value"><input placeholder=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Ubicaci&oacute;n</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Guarne</option><option>Rionegro</option><option>Marinilla</option><option>Sonson</option></select></span></div>
+                            </div>
+                        </div>
+
+                        <!-- DATOS TÉCNICOS EN CARGA -->
+                        <h5 style="font-size:13px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:1px solid #dee2e6;padding-bottom:6px;margin:20px 0 10px;">Datos T&eacute;cnicos en Carga</h5>
+                        <div class="o-group">
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">M&aacute;ximo volumen (m&sup3;)</span><span class="o-field-value"><input type="number" step="0.01" placeholder="0.00"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Velocidad m&aacute;xima</span><span class="o-field-value"><input type="number" placeholder="0"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Capacidad de carga (ton)</span><span class="o-field-value"><input type="number" step="0.01" placeholder="0.00"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Peso bruto veh&iacute;culo (ton)</span><span class="o-field-value"><input type="number" step="0.01" placeholder="0.00"></span></div>
+                            </div>
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">N&uacute;mero de ejes</span><span class="o-field-value"><input type="number" placeholder="0"></span></div>
+                            </div>
+                        </div>
+
+                        <!-- DATOS LEGALES Y DE PROPIEDAD -->
+                        <h5 style="font-size:13px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:1px solid #dee2e6;padding-bottom:6px;margin:20px 0 10px;">Datos Legales y de Propiedad</h5>
+                        <div class="o-group">
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Propietario</span><span class="o-field-value"><input placeholder=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">C&oacute;digo RUNT propietario</span><span class="o-field-value"><input placeholder=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Servicio</span><span class="o-field-value"><select><option>P&uacute;blico</option><option>Particular</option></select></span></div>
+                            </div>
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Tarjeta de propiedad</span><span class="o-field-value"><input placeholder=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Fecha tarjeta propiedad</span><span class="o-field-value"><input type="date"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Organismo de tr&aacute;nsito</span><span class="o-field-value"><input placeholder="Departamento de tr&aacute;nsito"></span></div>
+                            </div>
+                        </div>
+
+                        <!-- DESTINACIONES -->
+                        <h5 style="font-size:13px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:1px solid #dee2e6;padding-bottom:6px;margin:20px 0 10px;">Destinaciones</h5>
+                        <div class="o-inline-list">
+                            <table>
+                                <thead><tr><th>Ruta</th><th>Cliente</th><th>Frecuencia</th></tr></thead>
+                                <tbody></tbody>
+                            </table>
+                            <div class="o-add-line"><i class="fas fa-plus"></i> Agregar una l&iacute;nea</div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
-    `, `<button class="o-btn o-btn-secondary" onclick="closeModal()">Descartar</button><button class="o-btn o-btn-primary" onclick="closeModal()">Guardar</button>`);
+
+        <!-- CHATTER (Panel derecho) -->
+        <div class="o-chatter" style="width:320px;border-left:1px solid #dee2e6;padding:16px;background:#fafafa;">
+            <div style="display:flex;gap:8px;margin-bottom:12px;">
+                <button class="o-btn o-btn-secondary" style="font-size:11px;padding:4px 10px;"><i class="fas fa-envelope"></i> Enviar mensaje</button>
+                <button class="o-btn o-btn-secondary" style="font-size:11px;padding:4px 10px;"><i class="fas fa-sticky-note"></i> Nota</button>
+                <button class="o-btn o-btn-secondary" style="font-size:11px;padding:4px 10px;"><i class="fas fa-calendar"></i> Actividad</button>
+            </div>
+            <div style="border-bottom:1px solid #dee2e6;padding-bottom:10px;margin-bottom:12px;">
+                <div style="font-size:11px;color:#6c757d;margin-bottom:6px;font-weight:600;">INFORMACI&Oacute;N</div>
+                <div class="o-field-row" style="margin-bottom:4px;"><span class="o-field-label" style="font-size:11px;">Conductor</span><span class="o-field-value" style="font-size:11px;color:#6c757d;">Sin asignar</span></div>
+                <div class="o-field-row" style="margin-bottom:4px;"><span class="o-field-label" style="font-size:11px;">Servicio</span><span class="o-field-value" style="font-size:11px;color:#6c757d;">&mdash;</span></div>
+            </div>
+            <div class="o-chatter-title" style="font-size:12px;font-weight:600;margin-bottom:8px;">Historial</div>
+            <div class="o-log-item"><div class="o-log-avatar">SIS</div><div class="o-log-content"><strong>ADMINISTRADOR</strong> &middot; Admin<br>Creado un nuevo registro.<br><span class="o-log-date">Ahora</span></div></div>
+        </div>
+    </div>`;
 }
 
 function openVehicleDetail() {
