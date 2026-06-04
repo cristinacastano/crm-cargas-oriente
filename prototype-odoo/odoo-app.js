@@ -1074,7 +1074,7 @@ function clientNewFormView() {
                                 <div class="o-field-row"><span class="o-field-label">Cupo de cr&eacute;dito</span><span class="o-field-value"><input type="number" value="0" step="0.01" placeholder="$ 0,00"></span></div>
                             </div>
                             <div>
-                                <div class="o-field-row"><span class="o-field-label">Tipos de veh&iacute;culo requeridos</span><span class="o-field-value"><select multiple style="height:80px;"><option>Tractomula C3S2</option><option>Tractomula C3S3</option><option>Dobletroque C3</option><option>Turbo C2</option><option>Minimula C2S1</option></select></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Tipos de veh&iacute;culo requeridos</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Tractomula C3S2</option><option>Tractomula C3S3</option><option>Dobletroque C3</option><option>Turbo C2</option><option>Minimula C2S1</option></select></span></div>
                             </div>
                         </div>
 
