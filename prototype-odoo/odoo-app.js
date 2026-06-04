@@ -935,8 +935,8 @@ function clientsListView() {
     return `
     <div class="o-control-panel">
         <div class="o-cp-left">
-            <span class="o-breadcrumb">Clientes</span>
             <button class="o-btn o-btn-primary" onclick="openClientForm()"><i class="fas fa-plus"></i> Nuevo</button>
+            <span class="o-breadcrumb">Clientes Log&iacute;sticos</span>
         </div>
         <div class="o-cp-right">
             <div class="o-searchbar"><i class="fas fa-search"></i><input placeholder="Buscar..."></div>
@@ -949,11 +949,11 @@ function clientsListView() {
     </div>
     <div class="o-list-view">
         <table>
-            <thead><tr><th style="width:30px;"><input type="checkbox" class="o-checkbox"></th><th>NIT</th><th>Razón Social</th><th>Contacto</th><th>Ciudad</th><th>Condición Pago</th><th>Rutas</th><th>Estado</th></tr></thead>
+            <thead><tr><th style="width:30px;"><input type="checkbox" class="o-checkbox"></th><th>NIT</th><th>Estado cliente</th><th>Condiciones de pago</th><th>Documentos</th><th>Nombre</th><th>Correo electr&oacute;nico</th><th>Tel&eacute;fono</th><th>Actividades</th><th>Pa&iacute;s</th></tr></thead>
             <tbody>
-                <tr onclick="openClientDetail()"><td><input type="checkbox" class="o-checkbox"></td><td>900.123.456-7</td><td><strong>ISAGEN S.A. E.S.P.</strong></td><td>María García</td><td>Medellín</td><td>30 días</td><td>3</td><td><span class="o-badge-status o-badge-success">Activo</span></td></tr>
-                <tr onclick="openClientDetail()"><td><input type="checkbox" class="o-checkbox"></td><td>800.456.789-1</td><td><strong>Peldar S.A.</strong></td><td>Pedro Martínez</td><td>Envigado</td><td>45 días</td><td>2</td><td><span class="o-badge-status o-badge-success">Activo</span></td></tr>
-                <tr onclick="openClientDetail()"><td><input type="checkbox" class="o-checkbox"></td><td>901.234.567-8</td><td><strong>Sika Colombia S.A.S.</strong></td><td>Laura Sánchez</td><td>Tocancipá</td><td>30 días</td><td>1</td><td><span class="o-badge-status o-badge-info">Prospecto</span></td></tr>
+                <tr onclick="openClientDetail()"><td><input type="checkbox" class="o-checkbox"></td><td>900.123.456-7</td><td><span class="o-badge-status o-badge-success">Activo</span></td><td>30 d&iacute;as</td><td><span class="o-badge-status o-badge-success">Vigente</span></td><td><strong>ISAGEN S.A. E.S.P.</strong></td><td style="color:var(--o-brand);">maria@isagen.com</td><td>3104567890</td><td><i class="fas fa-clock" style="color:#6c757d;"></i></td><td>Colombia</td></tr>
+                <tr onclick="openClientDetail()"><td><input type="checkbox" class="o-checkbox"></td><td>830.027.386-6</td><td><span class="o-badge-status o-badge-success">Activo</span></td><td>30 d&iacute;as</td><td><span class="o-badge-status o-badge-warning">Pr&oacute;ximo a vencer</span></td><td><strong>OMYA ANDIA S.A.</strong></td><td style="color:var(--o-brand);">pedroperez@omya.com</td><td>4444444</td><td><i class="fas fa-clock" style="color:#6c757d;"></i></td><td>Colombia</td></tr>
+                <tr onclick="openClientDetail()"><td><input type="checkbox" class="o-checkbox"></td><td>901.234.567-8</td><td><span class="o-badge-status o-badge-info">Prospecto</span></td><td></td><td><span class="o-badge-status o-badge-success">Vigente</span></td><td><strong>Demo Cliente Log&iacute;stico S.A.S.</strong></td><td></td><td></td><td><i class="fas fa-clock" style="color:#6c757d;"></i></td><td></td></tr>
             </tbody>
         </table>
     </div>`;
@@ -962,58 +962,162 @@ function clientsListView() {
 function loadClientKanban() {
     document.getElementById('mainContent').innerHTML = `
     <div class="o-control-panel">
-        <div class="o-cp-left"><span class="o-breadcrumb">Clientes</span><button class="o-btn o-btn-primary"><i class="fas fa-plus"></i> Nuevo</button></div>
+        <div class="o-cp-left"><button class="o-btn o-btn-primary" onclick="openClientForm()"><i class="fas fa-plus"></i> Nuevo</button><span class="o-breadcrumb">Clientes Log&iacute;sticos</span></div>
         <div class="o-cp-right">
             <div class="o-searchbar"><i class="fas fa-search"></i><input placeholder="Buscar..."></div>
             <div class="o-view-switch"><button class="o-btn-icon" onclick="loadView('clients')"><i class="fas fa-list"></i></button><button class="o-btn-icon active"><i class="fas fa-th-large"></i></button></div>
         </div>
     </div>
     <div class="o-kanban-view">
-        <div class="o-kanban-card" onclick="openClientDetail()"><div class="o-kanban-card-header"><span class="o-kanban-card-title">ISAGEN S.A. E.S.P.</span><span class="o-badge-status o-badge-success">Activo</span></div><div class="o-kanban-card-body">NIT: 900.123.456-7<br>Medellín, Antioquia<br>Contacto: María García<br>3 rutas contratadas</div></div>
-        <div class="o-kanban-card" onclick="openClientDetail()"><div class="o-kanban-card-header"><span class="o-kanban-card-title">Peldar S.A.</span><span class="o-badge-status o-badge-success">Activo</span></div><div class="o-kanban-card-body">NIT: 800.456.789-1<br>Envigado, Antioquia<br>Contacto: Pedro Martínez<br>2 rutas contratadas</div></div>
-        <div class="o-kanban-card" onclick="openClientDetail()"><div class="o-kanban-card-header"><span class="o-kanban-card-title">Sika Colombia S.A.S.</span><span class="o-badge-status o-badge-info">Prospecto</span></div><div class="o-kanban-card-body">NIT: 901.234.567-8<br>Tocancipá, Cundinamarca<br>Contacto: Laura Sánchez<br>1 ruta contratada</div></div>
+        <div class="o-kanban-card" onclick="openClientDetail()"><div class="o-kanban-card-header"><span class="o-kanban-card-title">ISAGEN S.A. E.S.P.</span><span class="o-badge-status o-badge-success">Activo</span></div><div class="o-kanban-card-body">NIT: 900.123.456-7<br>Medell&iacute;n, Antioquia<br>Contacto: Mar&iacute;a Garc&iacute;a<br>Docs: <span style="color:#28a745;">Vigente</span></div></div>
+        <div class="o-kanban-card" onclick="openClientDetail()"><div class="o-kanban-card-header"><span class="o-kanban-card-title">OMYA ANDIA S.A.</span><span class="o-badge-status o-badge-success">Activo</span></div><div class="o-kanban-card-body">NIT: 830.027.386-6<br>Medell&iacute;n, Antioquia<br>Contacto: Pedro P&eacute;rez<br>Docs: <span style="color:#ffc107;">Pr&oacute;ximo a vencer</span></div></div>
+        <div class="o-kanban-card" onclick="openClientDetail()"><div class="o-kanban-card-header"><span class="o-kanban-card-title">Demo Cliente Log&iacute;stico S.A.S.</span><span class="o-badge-status o-badge-info">Prospecto</span></div><div class="o-kanban-card-body">NIT: 901.234.567-8<br><br>Docs: <span style="color:#28a745;">Vigente</span></div></div>
     </div>`;
 }
 
 function openClientForm() {
-    const deptoOptions = Object.keys(DEPARTAMENTOS_MUNICIPIOS).map(d => `<option value="${d}">${d}</option>`).join('');
-    openModal('Nuevo Cliente', `
-        <div class="o-form-view">
-            <div class="o-group">
-                <div>
-                    <div class="o-field-row"><span class="o-field-label">Tipo Persona</span><span class="o-field-value"><select><option>Persona Jurídica</option><option>Persona Natural</option></select></span></div>
-                    <div class="o-field-row"><span class="o-field-label">NIT</span><span class="o-field-value"><input placeholder="900.123.456"></span></div>
-                    <div class="o-field-row"><span class="o-field-label">DV</span><span class="o-field-value"><input placeholder="7" style="width:50px;"></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Razón Social</span><span class="o-field-value"><input placeholder="Empresa S.A.S."></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Dirección</span><span class="o-field-value"><input placeholder="Calle 10 #20-30"></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Departamento</span><span class="o-field-value"><select id="deptoSelect" onchange="updateCiudades()"><option value="">Seleccionar...</option>${deptoOptions}</select></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Ciudad / Municipio</span><span class="o-field-value"><select id="ciudadSelect"><option value="">Primero seleccione departamento</option></select></span></div>
-                    <div class="o-field-row"><span class="o-field-label">País</span><span class="o-field-value"><select><option>Colombia</option></select></span></div>
+    document.getElementById('mainContent').innerHTML = clientNewFormView();
+}
+
+function clientNewFormView() {
+    return `
+    <div class="o-control-panel">
+        <div class="o-cp-left">
+            <span class="o-breadcrumb"><span class="parent" onclick="loadView('clients')">Clientes log&iacute;sticos</span><span class="separator">/</span>Nuevo</span>
+            <button class="o-btn o-btn-icon" title="Guardar"><i class="fas fa-save"></i></button>
+            <button class="o-btn o-btn-icon" title="Descartar"><i class="fas fa-undo"></i></button>
+        </div>
+        <div class="o-cp-right"><button class="o-btn o-btn-secondary"><i class="fas fa-cog"></i></button></div>
+    </div>
+    <div class="o-form-view" style="display:flex;gap:0;">
+        <div style="flex:1;overflow-y:auto;">
+            <div class="o-form-statusbar">
+                <div class="o-statusbar-buttons"><button class="o-btn o-btn-primary">Activar cliente</button></div>
+                <div class="o-statusbar-status">
+                    <span class="o-status-pill active">Prospecto</span>
+                    <span class="o-status-pill">Activo</span>
+                    <span class="o-status-pill">Suspendido</span>
+                    <span class="o-status-pill">Inactivo</span>
+                    <span class="o-status-pill">Bloqueado</span>
                 </div>
-                <div>
-                    <div class="o-field-row"><span class="o-field-label">Contacto</span><span class="o-field-value"><input placeholder="Nombre completo"></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Cargo</span><span class="o-field-value"><input placeholder="Gerente Logística"></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Teléfono</span><span class="o-field-value"><input placeholder="(4) 123 4567"></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Celular</span><span class="o-field-value"><input placeholder="300 123 4567"></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Correo</span><span class="o-field-value"><input type="email" placeholder="contacto@empresa.com"></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Condición Pago</span><span class="o-field-value"><select><option>30 días</option><option>45 días</option><option>60 días</option><option>Contado</option></select></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Latitud</span><span class="o-field-value"><input placeholder="6.2442"></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Longitud</span><span class="o-field-value"><input placeholder="-75.5812"></span></div>
+            </div>
+            <div class="o-form-sheet">
+                <!-- Header -->
+                <div style="display:flex;gap:20px;align-items:flex-start;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #e9ecef;">
+                    <div style="width:80px;height:80px;border:1px dashed #dee2e6;border-radius:6px;display:flex;align-items:center;justify-content:center;background:#f8f9fa;">
+                        <i class="fas fa-building" style="font-size:30px;color:#adb5bd;"></i>
+                    </div>
+                    <div style="flex:1;">
+                        <div style="margin-bottom:6px;font-size:12px;"><label><input type="radio" name="tipo" value="persona"> Persona</label> &nbsp; <label><input type="radio" name="tipo" value="empresa" checked> Empresa</label></div>
+                        <input style="font-size:22px;font-weight:600;border:none;border-bottom:1px solid #dee2e6;width:100%;max-width:500px;padding:4px 0;" placeholder="e.g. Cargas Oriente S.A.S.">
+                    </div>
+                    <div style="text-align:right;">
+                        <div class="o-field-row" style="justify-content:flex-end;"><span class="o-field-label">Cliente log&iacute;stico</span><span class="o-field-value"><input type="checkbox" checked></span></div>
+                        <div class="o-field-row" style="justify-content:flex-end;"><span class="o-field-label">Alerta documental</span><span class="o-field-value"><span class="o-badge-status o-badge-success">Vigente</span></span></div>
+                    </div>
+                </div>
+
+                <!-- IDENTIFICACIÓN -->
+                <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:1px solid #e9ecef;padding-bottom:4px;margin-bottom:10px;">Identificaci&oacute;n</h5>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:16px;">
+                    <div class="o-field-row"><span class="o-field-label">NIT</span><span class="o-field-value"><input placeholder="123456789"></span></div>
+                    <div class="o-field-row"><span class="o-field-label">D&iacute;gito de verificaci&oacute;n</span><span class="o-field-value"><input placeholder="0" style="width:60px;"></span></div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="o-notebook">
+                    <div class="o-notebook-tabs">
+                        <span class="o-notebook-tab active" onclick="switchVehicleTab(this,'cl-general')">Informaci&oacute;n General</span>
+                        <span class="o-notebook-tab" onclick="switchVehicleTab(this,'cl-comercial')">Informaci&oacute;n Comercial y Operativa</span>
+                        <span class="o-notebook-tab" onclick="switchVehicleTab(this,'cl-docs')">Gesti&oacute;n Documental</span>
+                    </div>
+
+                    <!-- TAB: Información General -->
+                    <div class="o-notebook-content o-tab-content" id="cl-general">
+                        <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:1px solid #e9ecef;padding-bottom:4px;margin:12px 0 10px;">Ubicaci&oacute;n</h5>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Direcci&oacute;n principal</span><span class="o-field-value"><input placeholder=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Ciudad</span><span class="o-field-value"><input placeholder=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Departamento</span><span class="o-field-value"><input placeholder=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Pa&iacute;s</span><span class="o-field-value"><select><option>Colombia</option></select></span></div>
+                            </div>
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Latitud</span><span class="o-field-value"><input value="0.0000000" type="text"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Longitud</span><span class="o-field-value"><input value="0.0000000" type="text"></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Empresa</span><span class="o-field-value"><input value="" placeholder=""></span></div>
+                            </div>
+                        </div>
+                        <p style="font-size:11px;color:#6c757d;margin:12px 0;font-style:italic;">Las coordenadas corresponden al punto de carga u operaci&oacute;n principal.</p>
+
+                        <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:1px solid #e9ecef;padding-bottom:4px;margin:16px 0 10px;">Informaci&oacute;n de Contacto</h5>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Nombre del contacto principal</span><span class="o-field-value"><input placeholder=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Cargo</span><span class="o-field-value"><input placeholder=""></span></div>
+                            </div>
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Tel&eacute;fono</span><span class="o-field-value"><input placeholder=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Celular</span><span class="o-field-value"><input placeholder=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Correo electr&oacute;nico</span><span class="o-field-value"><input type="email" placeholder=""></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Información Comercial y Operativa -->
+                    <div class="o-notebook-content o-tab-content" id="cl-comercial" style="display:none;">
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:16px;">
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Tipo de mercanc&iacute;a</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Carga seca</option><option>Qu&iacute;micos</option><option>Vidrio</option><option>Materiales construcci&oacute;n</option><option>Alimentos</option></select></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Descripci&oacute;n de mercanc&iacute;a</span><span class="o-field-value"><input placeholder=""></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Condiciones de pago</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Contado</option><option>15 d&iacute;as</option><option>30 d&iacute;as</option><option>45 d&iacute;as</option><option>60 d&iacute;as</option></select></span></div>
+                                <div class="o-field-row"><span class="o-field-label">Cupo de cr&eacute;dito</span><span class="o-field-value"><input type="number" value="0" step="0.01" placeholder="$ 0,00"></span></div>
+                            </div>
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Tipos de veh&iacute;culo requeridos</span><span class="o-field-value"><select multiple style="height:80px;"><option>Tractomula C3S2</option><option>Tractomula C3S3</option><option>Dobletroque C3</option><option>Turbo C2</option><option>Minimula C2S1</option></select></span></div>
+                            </div>
+                        </div>
+
+                        <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:1px solid #e9ecef;padding-bottom:4px;margin:16px 0 10px;">Rutas Contratadas</h5>
+                        <div class="o-inline-list">
+                            <table>
+                                <thead><tr><th>Ruta</th><th>Valor flete</th><th>Tipo cobro</th><th>Pago conductor</th><th>Tipo pago</th><th>Vigencia</th></tr></thead>
+                                <tbody></tbody>
+                            </table>
+                            <div class="o-add-line" onclick="openTarifaRutaModal()"><i class="fas fa-plus"></i> Agregar Tarifas de ruta</div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Gestión Documental -->
+                    <div class="o-notebook-content o-tab-content" id="cl-docs" style="display:none;">
+                        <div class="o-notebook-tabs" style="border-bottom:1px solid #e9ecef;margin-bottom:12px;">
+                            <span class="o-notebook-tab active" style="font-size:12px;padding:6px 12px;">Legal</span>
+                            <span class="o-notebook-tab" style="font-size:12px;padding:6px 12px;">Gesti&oacute;n al cliente</span>
+                            <span class="o-notebook-tab" style="font-size:12px;padding:6px 12px;">Seguridad y financiero</span>
+                            <span class="o-notebook-tab" style="font-size:12px;padding:6px 12px;">Comercial</span>
+                            <span class="o-notebook-tab" style="font-size:12px;padding:6px 12px;">Fichas t&eacute;cnicas</span>
+                        </div>
+                        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+                            <div style="border:1px dashed #dee2e6;border-radius:6px;padding:16px;text-align:center;cursor:pointer;color:var(--o-action);" onclick="openClientDocModal()">
+                                <i class="fas fa-plus" style="font-size:20px;margin-bottom:6px;display:block;"></i>
+                                <span style="font-size:12px;">Agregar Documentos</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    `, `<button class="o-btn o-btn-secondary" onclick="closeModal()">Descartar</button><button class="o-btn o-btn-primary" onclick="closeModal()">Guardar</button>`);
-}
-
-function updateCiudades() {
-    const depto = document.getElementById('deptoSelect').value;
-    const ciudadSelect = document.getElementById('ciudadSelect');
-    ciudadSelect.innerHTML = '<option value="">Seleccionar...</option>';
-    if (depto && DEPARTAMENTOS_MUNICIPIOS[depto]) {
-        DEPARTAMENTOS_MUNICIPIOS[depto].forEach(ciudad => {
-            ciudadSelect.innerHTML += `<option value="${ciudad}">${ciudad}</option>`;
-        });
-    }
+        <!-- Chatter -->
+        <div class="o-chatter" style="width:300px;border-left:1px solid #dee2e6;padding:16px;background:#fafafa;">
+            <div style="display:flex;gap:8px;margin-bottom:12px;">
+                <button class="o-btn o-btn-secondary" style="font-size:11px;padding:4px 10px;"><i class="fas fa-envelope"></i> Enviar mensaje</button>
+                <button class="o-btn o-btn-secondary" style="font-size:11px;padding:4px 10px;"><i class="fas fa-sticky-note"></i> Registrar una nota</button>
+                <button class="o-btn o-btn-secondary" style="font-size:11px;padding:4px 10px;"><i class="fas fa-calendar"></i> Actividad</button>
+            </div>
+            <div class="o-chatter-title" style="font-size:12px;font-weight:600;margin-bottom:8px;">Historial</div>
+            <div class="o-log-item"><div class="o-log-avatar" style="background:var(--o-action);color:#fff;">A</div><div class="o-log-content"><strong>Administrador</strong><br>Creando un nuevo registro..<br><span class="o-log-date">Ahora</span></div></div>
+        </div>
+    </div>`;
 }
 
 function openClientDetail() {
@@ -1023,59 +1127,217 @@ function openClientDetail() {
 function clientFormView() {
     return `
     <div class="o-control-panel">
-        <div class="o-cp-left"><span class="o-breadcrumb"><span class="parent" onclick="loadView('clients')">Clientes</span><span class="separator">/</span>ISAGEN S.A. E.S.P.</span></div>
-        <div class="o-cp-right"><button class="o-btn o-btn-secondary"><i class="fas fa-edit"></i> Editar</button></div>
+        <div class="o-cp-left"><span class="o-breadcrumb"><span class="parent" onclick="loadView('clients')">Clientes log&iacute;sticos</span><span class="separator">/</span>ISAGEN S.A. E.S.P.</span></div>
+        <div class="o-cp-right"><button class="o-btn o-btn-secondary"><i class="fas fa-edit"></i> Editar</button><div class="o-pager"><button><i class="fas fa-chevron-left"></i></button><span>1 / 3</span><button><i class="fas fa-chevron-right"></i></button></div></div>
     </div>
-    <div class="o-form-view">
-        <div class="o-form-statusbar">
-            <div class="o-statusbar-buttons"><button class="o-btn o-btn-primary">Activar Cliente</button></div>
-            <div class="o-statusbar-status">
-                <span class="o-status-pill">Prospecto</span>
-                <span class="o-status-pill done">Activo</span>
-                <span class="o-status-pill">Suspendido</span>
-                <span class="o-status-pill">Inactivo</span>
+    <div class="o-form-view" style="display:flex;gap:0;">
+        <div style="flex:1;overflow-y:auto;">
+            <div class="o-form-statusbar">
+                <div class="o-statusbar-buttons"></div>
+                <div class="o-statusbar-status">
+                    <span class="o-status-pill done">Prospecto</span>
+                    <span class="o-status-pill active">Activo</span>
+                    <span class="o-status-pill">Suspendido</span>
+                    <span class="o-status-pill">Inactivo</span>
+                    <span class="o-status-pill">Bloqueado</span>
+                </div>
             </div>
-        </div>
-        <div class="o-group">
-            <div>
-                <div class="o-field-row"><span class="o-field-label">NIT</span><span class="o-field-value">900.123.456-7</span></div>
-                <div class="o-field-row"><span class="o-field-label">Razón Social</span><span class="o-field-value"><strong>ISAGEN S.A. E.S.P.</strong></span></div>
-                <div class="o-field-row"><span class="o-field-label">Dirección</span><span class="o-field-value">Cra 48 #26-85, Medellín</span></div>
-                <div class="o-field-row"><span class="o-field-label">Ciudad</span><span class="o-field-value">Medellín, Antioquia</span></div>
-                <div class="o-field-row"><span class="o-field-label">Coordenadas</span><span class="o-field-value">6.2442, -75.5812</span></div>
-            </div>
-            <div>
-                <div class="o-field-row"><span class="o-field-label">Contacto</span><span class="o-field-value">María García</span></div>
-                <div class="o-field-row"><span class="o-field-label">Cargo</span><span class="o-field-value">Gerente Logística</span></div>
-                <div class="o-field-row"><span class="o-field-label">Celular</span><span class="o-field-value">310 456 7890</span></div>
-                <div class="o-field-row"><span class="o-field-label">Correo</span><span class="o-field-value" style="color:var(--o-brand);">maria@isagen.com</span></div>
-                <div class="o-field-row"><span class="o-field-label">Condición Pago</span><span class="o-field-value">30 días</span></div>
-            </div>
-        </div>
-        <div class="o-notebook">
-            <div class="o-notebook-tabs">
-                <span class="o-notebook-tab active">Rutas</span>
-                <span class="o-notebook-tab">Legal</span>
-                <span class="o-notebook-tab">Gestión Cliente</span>
-                <span class="o-notebook-tab">Seguridad</span>
-                <span class="o-notebook-tab">Cotizaciones</span>
-                <span class="o-notebook-tab">Fichas Técnicas</span>
-            </div>
-            <div class="o-notebook-content">
-                <div class="o-inline-list">
-                    <table>
-                        <thead><tr><th>Ruta</th><th>Producto</th><th>Tipo Vehículo</th><th>Tarifa Vigente</th><th>Tipo Cobro</th></tr></thead>
-                        <tbody>
-                            <tr><td>Guarne â†' Rionegro-Tanque</td><td>Carga seca</td><td>Tractomula</td><td>$2,850,000</td><td>Por viaje</td></tr>
-                            <tr><td>Sonson â†' Tocancipá</td><td>Químicos</td><td>Cisterna</td><td>$4,200,000</td><td>Por viaje</td></tr>
-                            <tr><td>Marinilla â†' Bogotá</td><td>Carga seca</td><td>Tractomula</td><td>$3,500,000</td><td>Por viaje</td></tr>
-                        </tbody>
-                    </table>
-                    <div class="o-add-line"><i class="fas fa-plus"></i> Agregar ruta</div>
+            <div class="o-form-sheet">
+                <!-- Header -->
+                <div style="display:flex;gap:20px;align-items:flex-start;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #e9ecef;">
+                    <div style="width:80px;height:80px;border-radius:6px;background:var(--o-brand);display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;font-weight:700;">I</div>
+                    <div style="flex:1;">
+                        <div style="margin-bottom:4px;font-size:12px;color:#6c757d;"><label><input type="radio" name="tipo2" disabled> Persona</label> &nbsp; <label><input type="radio" name="tipo2" checked disabled> Empresa</label></div>
+                        <div style="font-size:22px;font-weight:700;">ISAGEN S.A. E.S.P.</div>
+                    </div>
+                    <div style="text-align:right;">
+                        <div class="o-field-row" style="justify-content:flex-end;"><span class="o-field-label">Cliente log&iacute;stico</span><span class="o-field-value"><input type="checkbox" checked disabled></span></div>
+                        <div class="o-field-row" style="justify-content:flex-end;"><span class="o-field-label">Alerta documental</span><span class="o-field-value"><span class="o-badge-status o-badge-success">Vigente</span></span></div>
+                    </div>
+                </div>
+
+                <!-- Identificación -->
+                <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:1px solid #e9ecef;padding-bottom:4px;margin-bottom:10px;">Identificaci&oacute;n</h5>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:16px;">
+                    <div class="o-field-row"><span class="o-field-label">NIT</span><span class="o-field-value">900.123.456-7</span></div>
+                    <div class="o-field-row"><span class="o-field-label">D&iacute;gito de verificaci&oacute;n</span><span class="o-field-value">7</span></div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="o-notebook">
+                    <div class="o-notebook-tabs">
+                        <span class="o-notebook-tab active" onclick="switchVehicleTab(this,'cld-general')">Informaci&oacute;n General</span>
+                        <span class="o-notebook-tab" onclick="switchVehicleTab(this,'cld-comercial')">Informaci&oacute;n Comercial y Operativa</span>
+                        <span class="o-notebook-tab" onclick="switchVehicleTab(this,'cld-docs')">Gesti&oacute;n Documental</span>
+                    </div>
+
+                    <!-- TAB: General -->
+                    <div class="o-notebook-content o-tab-content" id="cld-general">
+                        <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:1px solid #e9ecef;padding-bottom:4px;margin:12px 0 10px;">Ubicaci&oacute;n</h5>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Direcci&oacute;n principal</span><span class="o-field-value">Cra 48 #26-85</span></div>
+                                <div class="o-field-row"><span class="o-field-label">Ciudad</span><span class="o-field-value">Medell&iacute;n</span></div>
+                                <div class="o-field-row"><span class="o-field-label">Departamento</span><span class="o-field-value">Antioquia</span></div>
+                                <div class="o-field-row"><span class="o-field-label">Pa&iacute;s</span><span class="o-field-value">Colombia</span></div>
+                            </div>
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Latitud</span><span class="o-field-value">6.2442000</span></div>
+                                <div class="o-field-row"><span class="o-field-label">Longitud</span><span class="o-field-value">-75.5812000</span></div>
+                                <div class="o-field-row"><span class="o-field-label">Empresa</span><span class="o-field-value">Cargas del Oriente S.A.</span></div>
+                            </div>
+                        </div>
+                        <p style="font-size:11px;color:#6c757d;margin:12px 0;font-style:italic;">Las coordenadas corresponden al punto de carga u operaci&oacute;n principal.</p>
+                        <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:1px solid #e9ecef;padding-bottom:4px;margin:16px 0 10px;">Informaci&oacute;n de Contacto</h5>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Nombre contacto principal</span><span class="o-field-value">Mar&iacute;a Garc&iacute;a</span></div>
+                                <div class="o-field-row"><span class="o-field-label">Cargo</span><span class="o-field-value">Gerente Log&iacute;stica</span></div>
+                            </div>
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Tel&eacute;fono</span><span class="o-field-value">(4) 444 5555</span></div>
+                                <div class="o-field-row"><span class="o-field-label">Celular</span><span class="o-field-value">310 456 7890</span></div>
+                                <div class="o-field-row"><span class="o-field-label">Correo electr&oacute;nico</span><span class="o-field-value" style="color:var(--o-brand);">maria@isagen.com</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Comercial y Operativa -->
+                    <div class="o-notebook-content o-tab-content" id="cld-comercial" style="display:none;">
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:16px;">
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Tipo de mercanc&iacute;a</span><span class="o-field-value">Carga seca / Qu&iacute;micos</span></div>
+                                <div class="o-field-row"><span class="o-field-label">Descripci&oacute;n mercanc&iacute;a</span><span class="o-field-value">Transformadores, tanques</span></div>
+                                <div class="o-field-row"><span class="o-field-label">Condiciones de pago</span><span class="o-field-value">30 d&iacute;as</span></div>
+                                <div class="o-field-row"><span class="o-field-label">Cupo de cr&eacute;dito</span><span class="o-field-value">$50,000,000</span></div>
+                            </div>
+                            <div>
+                                <div class="o-field-row"><span class="o-field-label">Tipos veh&iacute;culo requeridos</span><span class="o-field-value">Tractomula C3S2, Cisterna</span></div>
+                            </div>
+                        </div>
+                        <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:1px solid #e9ecef;padding-bottom:4px;margin:16px 0 10px;">Rutas Contratadas</h5>
+                        <div class="o-inline-list">
+                            <table>
+                                <thead><tr><th>Ruta</th><th>Valor flete</th><th>Tipo cobro</th><th>Pago conductor</th><th>Tipo pago</th><th>Aux. rodamiento</th><th>Vigencia</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Guarne &rarr; Rionegro-Tanque</td><td>$2,850,000</td><td>Por viaje</td><td>$650,000</td><td>Viaje</td><td>$80,000</td><td>Vigente</td></tr>
+                                    <tr><td>Sonson &rarr; Tocancip&aacute;</td><td>$4,200,000</td><td>Por viaje</td><td>$900,000</td><td>Viaje</td><td>$120,000</td><td>Vigente</td></tr>
+                                    <tr><td>Marinilla &rarr; Bogot&aacute;</td><td>$3,500,000</td><td>Por viaje</td><td>$750,000</td><td>Viaje</td><td>$100,000</td><td>Vigente</td></tr>
+                                </tbody>
+                            </table>
+                            <div class="o-add-line" onclick="openTarifaRutaModal()"><i class="fas fa-plus"></i> Agregar Tarifas de ruta</div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Gestión Documental -->
+                    <div class="o-notebook-content o-tab-content" id="cld-docs" style="display:none;">
+                        <div class="o-notebook-tabs" style="border-bottom:1px solid #e9ecef;margin-bottom:12px;">
+                            <span class="o-notebook-tab active" style="font-size:12px;padding:6px 12px;">Legal</span>
+                            <span class="o-notebook-tab" style="font-size:12px;padding:6px 12px;">Gesti&oacute;n al cliente</span>
+                            <span class="o-notebook-tab" style="font-size:12px;padding:6px 12px;">Seguridad y financiero</span>
+                            <span class="o-notebook-tab" style="font-size:12px;padding:6px 12px;">Comercial</span>
+                            <span class="o-notebook-tab" style="font-size:12px;padding:6px 12px;">Fichas t&eacute;cnicas / Hojas de seguridad</span>
+                        </div>
+                        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+                            <div style="border:1px solid #28a745;border-radius:6px;padding:12px;background:#fff;">
+                                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><strong style="font-size:12px;">C&aacute;mara de Comercio</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
+                                <div style="font-size:11px;color:#6c757d;"><i class="fas fa-file" style="margin-right:4px;"></i># 141414<br><i class="fas fa-calendar" style="margin-right:4px;"></i>Vence: 30/12/2026</div>
+                                <div style="margin-top:8px;display:flex;gap:4px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;">Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;color:#dc3545;">Delete</button></div>
+                            </div>
+                            <div style="border:1px solid #28a745;border-radius:6px;padding:12px;background:#fff;">
+                                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><strong style="font-size:12px;">Registro RUES</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
+                                <div style="font-size:11px;color:#6c757d;"><i class="fas fa-file" style="margin-right:4px;"></i></div>
+                                <div style="margin-top:8px;display:flex;gap:4px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;">Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;color:#dc3545;">Delete</button></div>
+                            </div>
+                            <div style="border:1px solid #28a745;border-radius:6px;padding:12px;background:#fff;">
+                                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><strong style="font-size:12px;">Estudio de seguridad</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
+                                <div style="font-size:11px;color:#6c757d;"><i class="fas fa-file" style="margin-right:4px;"></i></div>
+                                <div style="margin-top:8px;display:flex;gap:4px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;">Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;color:#dc3545;">Delete</button></div>
+                            </div>
+                            <div style="border:1px solid #28a745;border-radius:6px;padding:12px;background:#fff;">
+                                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><strong style="font-size:12px;">Estados financieros</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
+                                <div style="font-size:11px;color:#6c757d;"><i class="fas fa-file" style="margin-right:4px;"></i></div>
+                                <div style="margin-top:8px;display:flex;gap:4px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;">Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;color:#dc3545;">Delete</button></div>
+                            </div>
+                            <div style="border:1px solid #28a745;border-radius:6px;padding:12px;background:#fff;">
+                                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><strong style="font-size:12px;">RUT</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
+                                <div style="font-size:11px;color:#6c757d;"><i class="fas fa-file" style="margin-right:4px;"></i></div>
+                                <div style="margin-top:8px;display:flex;gap:4px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;">Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;color:#dc3545;">Delete</button></div>
+                            </div>
+                            <div style="border:1px solid #28a745;border-radius:6px;padding:12px;background:#fff;">
+                                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><strong style="font-size:12px;">C&eacute;dula rep. legal</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
+                                <div style="font-size:11px;color:#6c757d;"><i class="fas fa-file" style="margin-right:4px;"></i></div>
+                                <div style="margin-top:8px;display:flex;gap:4px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;">Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;color:#dc3545;">Delete</button></div>
+                            </div>
+                            <div style="border:1px dashed #dee2e6;border-radius:6px;padding:16px;text-align:center;cursor:pointer;color:var(--o-action);" onclick="openClientDocModal()">
+                                <i class="fas fa-plus" style="font-size:18px;margin-bottom:4px;display:block;"></i>
+                                <span style="font-size:11px;">Agregar Documentos</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- Chatter -->
+        <div class="o-chatter" style="width:300px;border-left:1px solid #dee2e6;padding:16px;background:#fafafa;">
+            <div style="display:flex;gap:8px;margin-bottom:12px;">
+                <button class="o-btn o-btn-secondary" style="font-size:11px;padding:4px 10px;"><i class="fas fa-envelope"></i> Enviar mensaje</button>
+                <button class="o-btn o-btn-secondary" style="font-size:11px;padding:4px 10px;"><i class="fas fa-sticky-note"></i> Nota</button>
+                <button class="o-btn o-btn-secondary" style="font-size:11px;padding:4px 10px;"><i class="fas fa-calendar"></i> Actividad</button>
+            </div>
+            <div class="o-chatter-title" style="font-size:12px;font-weight:600;margin-bottom:8px;">Historial</div>
+            <div class="o-log-item"><div class="o-log-avatar" style="background:var(--o-action);color:#fff;">A</div><div class="o-log-content"><strong>Administrador</strong><br>Prospecto &rarr; <span style="color:var(--o-brand);">Activo</span> (Estado del cliente)<br><span class="o-log-date">Hace 3 d&iacute;as</span></div></div>
+            <div class="o-log-item"><div class="o-log-avatar" style="background:var(--o-action);color:#fff;">A</div><div class="o-log-content"><strong>Administrador</strong><br>ISAGEN S.A. E.S.P. (Raz&oacute;n social)<br><span class="o-log-date">05/06/2026</span></div></div>
+            <div class="o-log-item"><div class="o-log-avatar" style="background:var(--o-action);color:#fff;">A</div><div class="o-log-content"><strong>Administrador</strong><br>Contacto creado<br><span class="o-log-date">05/06/2026</span></div></div>
+        </div>
     </div>`;
+}
+
+// Modals for clients
+function openTarifaRutaModal() {
+    openModal('Crear Tarifas de ruta', `
+        <div class="o-form-view">
+            <div class="o-group">
+                <div>
+                    <h5 style="font-size:12px;font-weight:700;margin-bottom:10px;">CUSTOMER FREIGHT RATES</h5>
+                    <div class="o-field-row"><span class="o-field-label">Ruta</span><span class="o-field-value"><select style="width:100%;"><option>Seleccionar...</option><option>Guarne &rarr; Rionegro</option><option>Sonson &rarr; Tocancip&aacute;</option><option>Marinilla &rarr; Bogot&aacute;</option></select></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Valor del flete</span><span class="o-field-value"><input type="number" value="0" step="0.01" placeholder="$ 0,00"></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Tipo de cobro</span><span class="o-field-value"><select><option>Viaje</option><option>Tonelada</option><option>Gal&oacute;n</option></select></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Start Date</span><span class="o-field-value"><input type="date"></span></div>
+                    <div class="o-field-row"><span class="o-field-label">End Date</span><span class="o-field-value"><input type="date"></span></div>
+                    <h5 style="font-size:12px;font-weight:700;margin:16px 0 10px;">ADDITIONAL VALUES</h5>
+                    <div class="o-field-row"><span class="o-field-label">Auxilio de rodamiento</span><span class="o-field-value"><input type="number" value="0" step="0.01" placeholder="$ 0,00"></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Ajuste de ruta</span><span class="o-field-value"><input type="number" value="0" step="0.01" placeholder="$ 0,00"></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Valor de descargue</span><span class="o-field-value"><input type="number" value="0" step="0.01" placeholder="$ 0,00"></span></div>
+                </div>
+                <div>
+                    <h5 style="font-size:12px;font-weight:700;margin-bottom:10px;">DRIVER PAYMENT</h5>
+                    <div class="o-field-row"><span class="o-field-label">Pago conductor</span><span class="o-field-value"><input type="number" value="0" step="0.01" placeholder="$ 0,00"></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Tipo de pago conductor</span><span class="o-field-value"><select><option>Viaje</option><option>Tonelada</option></select></span></div>
+                </div>
+            </div>
+        </div>
+    `, '<button class="o-btn o-btn-primary" onclick="closeModal()">Guardar y cerrar</button><button class="o-btn o-btn-primary" onclick="closeModal()">Guardar y crear nuevo</button><button class="o-btn o-btn-secondary" onclick="closeModal()">Descartar</button>');
+}
+
+function openClientDocModal() {
+    openModal('Crear Documentos', `
+        <div class="o-form-view">
+            <div class="o-group">
+                <div>
+                    <div class="o-field-row"><span class="o-field-label">Tipo de documento</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Certificado C&aacute;mara de Comercio</option><option>Registro RUES</option><option>Estudio de seguridad</option><option>Estados financieros</option><option>Consulta Procuradur&iacute;a</option><option>Consulta Polic&iacute;a</option><option>RUT</option><option>C&eacute;dula representante legal</option><option>Consulta OFAC</option></select></span></div>
+                    <div class="o-field-row"><span class="o-field-label">N&uacute;mero</span><span class="o-field-value"><input placeholder=""></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Alerta de vencimiento</span><span class="o-field-value"><span class="o-badge-status o-badge-success">Vigente</span></span></div>
+                </div>
+                <div>
+                    <div class="o-field-row"><span class="o-field-label">Fecha de expedici&oacute;n</span><span class="o-field-value"><input type="date"></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Fecha de vencimiento</span><span class="o-field-value"><input type="date"></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Adjunto</span><span class="o-field-value"><button class="o-btn o-btn-primary" style="font-size:11px;padding:4px 10px;"><i class="fas fa-upload"></i> Sube tu archivo</button></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Nombre del archivo</span><span class="o-field-value"><input placeholder="" readonly></span></div>
+                </div>
+            </div>
+        </div>
+    `, '<button class="o-btn o-btn-primary" onclick="closeModal()">Guardar y cerrar</button><button class="o-btn o-btn-primary" onclick="closeModal()">Guardar y crear nuevo</button><button class="o-btn o-btn-secondary" onclick="closeModal()">Descartar</button>');
 }
 
 // ===== ROUTES LIST VIEW =====
