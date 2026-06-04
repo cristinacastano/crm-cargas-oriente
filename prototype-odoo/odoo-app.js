@@ -1407,10 +1407,10 @@ function routesListView() {
     </div>
     <div class="o-list-view">
         <table>
-            <thead><tr><th style="width:30px;"><input type="checkbox" class="o-checkbox"></th><th>C&oacute;digo</th><th>Nombre de ruta</th><th>Ciudad origen</th><th>Ciudad destino</th><th>Distancia (km)</th><th>Cantidad...</th><th>Compa&ntilde;&iacute;a</th></tr></thead>
+            <thead><tr><th style="width:30px;"><input type="checkbox" class="o-checkbox"></th><th>C&oacute;digo</th><th>Nombre de ruta</th><th>Ciudad origen</th><th>Ciudad destino</th><th>Distancia (km)</th><th>Estado</th><th>Compa&ntilde;&iacute;a</th></tr></thead>
             <tbody>
-                <tr onclick="openRouteDetail()"><td><input type="checkbox" class="o-checkbox"></td><td><strong>1</strong></td><td>Guarne-Rionegro-Tanque</td><td>GUARNE</td><td>RIONEGRO</td><td>21,00</td><td>1</td><td>CARGAS DEL ORIENTE S A</td></tr>
-                <tr onclick="openRouteDetail()"><td><input type="checkbox" class="o-checkbox"></td><td><strong>DEMO-RUTA-21</strong></td><td>Demo Guarne - Rionegro</td><td>Guarne</td><td>Rionegro</td><td>46,00</td><td>1</td><td>CARGAS DEL ORIENTE S A</td></tr>
+                <tr onclick="openRouteDetail()"><td><input type="checkbox" class="o-checkbox"></td><td><strong>1</strong></td><td>Guarne-Rionegro-Tanque</td><td>GUARNE</td><td>RIONEGRO</td><td>21,00</td><td><span class="o-badge-status o-badge-success">Activa</span></td><td>CARGAS DEL ORIENTE S A</td></tr>
+                <tr onclick="openRouteDetail()"><td><input type="checkbox" class="o-checkbox"></td><td><strong>DEMO-RUTA-21</strong></td><td>Demo Guarne - Rionegro</td><td>Guarne</td><td>Rionegro</td><td>46,00</td><td><span class="o-badge-status o-badge-success">Activa</span></td><td>CARGAS DEL ORIENTE S A</td></tr>
             </tbody>
         </table>
     </div>`;
@@ -1530,33 +1530,33 @@ function routeFormView() {
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
                         <div>
                             <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;margin-bottom:10px;">Origen</h5>
-                            <div class="o-field-row"><span class="o-field-label">Direcci&oacute;n origen</span><span class="o-field-value">GUARNE</span></div>
+                            <div class="o-field-row"><span class="o-field-label">Direcci&oacute;n origen</span><span class="o-field-value">Zona Industrial Guarne, Km 2 v&iacute;a Rionegro</span></div>
                             <div class="o-field-row"><span class="o-field-label">Ciudad origen</span><span class="o-field-value">GUARNE</span></div>
                             <div class="o-field-row"><span class="o-field-label">Departamento origen</span><span class="o-field-value">ANTIOQUIA</span></div>
-                            <div class="o-field-row"><span class="o-field-label">Latitud origen</span><span class="o-field-value">0,0000000</span></div>
-                            <div class="o-field-row"><span class="o-field-label">Longitud origen</span><span class="o-field-value">0,0000000</span></div>
+                            <div class="o-field-row"><span class="o-field-label">Latitud origen</span><span class="o-field-value">6,2763000</span></div>
+                            <div class="o-field-row"><span class="o-field-label">Longitud origen</span><span class="o-field-value">-75,4467000</span></div>
                         </div>
                         <div>
                             <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;margin-bottom:10px;">Destino</h5>
-                            <div class="o-field-row"><span class="o-field-label">Direcci&oacute;n destino</span><span class="o-field-value">RIONEGRO - TANQUE</span></div>
+                            <div class="o-field-row"><span class="o-field-label">Direcci&oacute;n destino</span><span class="o-field-value">Planta ISAGEN - Tanque Rionegro</span></div>
                             <div class="o-field-row"><span class="o-field-label">Ciudad destino</span><span class="o-field-value">RIONEGRO</span></div>
                             <div class="o-field-row"><span class="o-field-label">Departamento destino</span><span class="o-field-value">ANTIOQUIA</span></div>
-                            <div class="o-field-row"><span class="o-field-label">Latitud destino</span><span class="o-field-value">0,0000000</span></div>
-                            <div class="o-field-row"><span class="o-field-label">Longitud destino</span><span class="o-field-value">0,0000000</span></div>
+                            <div class="o-field-row"><span class="o-field-label">Latitud destino</span><span class="o-field-value">6,1552000</span></div>
+                            <div class="o-field-row"><span class="o-field-label">Longitud destino</span><span class="o-field-value">-75,3743000</span></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- TAB: Parametrización Económica -->
                 <div class="o-notebook-content o-tab-content" id="rd-param" style="display:none;">
-                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;">
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;">
                         <div style="border:1px solid #dee2e6;border-radius:6px;padding:14px;background:#fff;display:flex;gap:10px;">
                             <div style="flex-shrink:0;"><i class="fas fa-money-bill-wave" style="font-size:24px;color:#28a745;"></i></div>
                             <div style="flex:1;">
-                                <strong style="font-size:12px;">OMYA ANDIA S.A.</strong>
+                                <strong style="font-size:12px;">ISAGEN S.A. E.S.P.</strong>
                                 <div style="font-size:11px;color:#495057;line-height:1.7;margin-top:4px;">
-                                    <div><i class="fas fa-truck" style="width:14px;color:#6c757d;"></i> $ 36.265,00 &middot; Tonelada</div>
-                                    <div><i class="fas fa-user" style="width:14px;color:#6c757d;"></i> $ 50.000,00</div>
+                                    <div><i class="fas fa-truck" style="width:14px;color:#6c757d;"></i> $ 2.850.000 &middot; Viaje</div>
+                                    <div><i class="fas fa-user" style="width:14px;color:#6c757d;"></i> $ 650.000</div>
                                     <div><i class="fas fa-calendar" style="width:14px;color:#6c757d;"></i> 1 de ene - 31 de dic</div>
                                 </div>
                                 <div style="margin-top:8px;display:flex;gap:6px;">
@@ -1574,19 +1574,32 @@ function routeFormView() {
                 <!-- TAB: Costos Operativos -->
                 <div class="o-notebook-content o-tab-content" id="rd-costos" style="display:none;">
                     <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;margin-bottom:10px;">Peajes</h5>
-                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-bottom:20px;">
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:20px;">
+                        <div style="border:1px solid #dee2e6;border-radius:6px;padding:14px;background:#fff;display:flex;gap:10px;">
+                            <div style="flex-shrink:0;"><i class="fas fa-road" style="font-size:24px;color:#6c757d;"></i></div>
+                            <div style="flex:1;">
+                                <strong style="font-size:12px;">Peaje Santuario</strong>
+                                <div style="font-size:11px;color:#495057;line-height:1.7;margin-top:4px;">
+                                    <div><i class="fas fa-tag" style="width:14px;color:#6c757d;"></i> $ 16.800 &middot; Cat. V</div>
+                                </div>
+                                <div style="margin-top:8px;display:flex;gap:6px;">
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
                         <div style="border:1px dashed #dee2e6;border-radius:6px;padding:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--o-action);">
                             <span style="font-size:13px;font-style:italic;">Agregar Peajes de ruta</span>
                         </div>
                     </div>
                     <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;margin-bottom:10px;">Combustible</h5>
-                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;">
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;">
                         <div style="border:1px solid #dee2e6;border-radius:6px;padding:14px;background:#fff;display:flex;gap:10px;">
                             <div style="flex-shrink:0;"><i class="fas fa-gas-pump" style="font-size:24px;color:#28a745;"></i></div>
                             <div style="flex:1;">
-                                <strong style="font-size:12px;">VOLQUETA</strong>
+                                <strong style="font-size:12px;">TRACTOMULA C3S2</strong>
                                 <div style="font-size:11px;color:#495057;line-height:1.7;margin-top:4px;">
-                                    <div><i class="fas fa-tint" style="width:14px;color:#6c757d;"></i> 30,00 gal</div>
+                                    <div><i class="fas fa-tint" style="width:14px;color:#6c757d;"></i> 25,00 gal</div>
                                 </div>
                                 <div style="margin-top:8px;display:flex;gap:6px;">
                                     <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button>
