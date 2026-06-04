@@ -1244,8 +1244,8 @@ function clientFormView() {
                                 <div style="flex-shrink:0;"><i class="far fa-file-alt" style="font-size:28px;color:#adb5bd;"></i></div>
                                 <div style="flex:1;min-width:0;">
                                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:12px;">Certificado de C&aacute;mara de Comercio</strong><span class="o-badge-status o-badge-warning" style="font-size:9px;white-space:nowrap;">Pr&oacute;ximo a vencer</span></div>
-                                    <div style="font-size:11px;color:#6c757d;line-height:1.6;"><span># 141414</span><br><span><i class="fas fa-calendar-alt" style="margin-right:3px;"></i>Issued 1 de ene</span><br><span><i class="fas fa-calendar-times" style="margin-right:3px;"></i>Expires 30 de jun</span></div>
-                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button></div>
+                                    <div style="font-size:11px;color:#6c757d;line-height:1.6;"><span># 141414</span><br><span><i class="fas fa-calendar-alt" style="margin-right:3px;"></i>Expedido 1 de ene</span><br><span><i class="fas fa-calendar-times" style="margin-right:3px;"></i>Vence 30 de jun</span></div>
+                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Eliminar</button></div>
                                 </div>
                             </div>
                             <!-- Registro RUES -->
@@ -1254,7 +1254,7 @@ function clientFormView() {
                                 <div style="flex:1;min-width:0;">
                                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:12px;">Registro RUES</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
                                     <div style="font-size:11px;color:#6c757d;line-height:1.6;">&nbsp;</div>
-                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button></div>
+                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Eliminar</button></div>
                                 </div>
                             </div>
                             <!-- Estudio de seguridad -->
@@ -1263,7 +1263,7 @@ function clientFormView() {
                                 <div style="flex:1;min-width:0;">
                                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:12px;">Estudio de seguridad</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
                                     <div style="font-size:11px;color:#6c757d;line-height:1.6;">&nbsp;</div>
-                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button></div>
+                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Eliminar</button></div>
                                 </div>
                             </div>
                             <!-- Estados financieros -->
@@ -1272,7 +1272,7 @@ function clientFormView() {
                                 <div style="flex:1;min-width:0;">
                                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:12px;">Estados financieros</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
                                     <div style="font-size:11px;color:#6c757d;line-height:1.6;">&nbsp;</div>
-                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button></div>
+                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Eliminar</button></div>
                                 </div>
                             </div>
                             <!-- Consulta Procuraduría -->
@@ -1281,7 +1281,7 @@ function clientFormView() {
                                 <div style="flex:1;min-width:0;">
                                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:12px;">Consulta Procuradur&iacute;a</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
                                     <div style="font-size:11px;color:#6c757d;line-height:1.6;">&nbsp;</div>
-                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button></div>
+                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Eliminar</button></div>
                                 </div>
                             </div>
                             <!-- Consulta Policía -->
@@ -1290,7 +1290,7 @@ function clientFormView() {
                                 <div style="flex:1;min-width:0;">
                                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:12px;">Consulta Polic&iacute;a</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
                                     <div style="font-size:11px;color:#6c757d;line-height:1.6;">&nbsp;</div>
-                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button></div>
+                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Eliminar</button></div>
                                 </div>
                             </div>
                             <!-- RUT -->
@@ -1299,7 +1299,7 @@ function clientFormView() {
                                 <div style="flex:1;min-width:0;">
                                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:12px;">Registro &Uacute;nico Tributario (RUT)</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
                                     <div style="font-size:11px;color:#6c757d;line-height:1.6;">&nbsp;</div>
-                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button></div>
+                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Eliminar</button></div>
                                 </div>
                             </div>
                             <!-- Cédula representante legal -->
@@ -1308,7 +1308,7 @@ function clientFormView() {
                                 <div style="flex:1;min-width:0;">
                                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:12px;">C&eacute;dula del representante legal</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
                                     <div style="font-size:11px;color:#6c757d;line-height:1.6;">&nbsp;</div>
-                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button></div>
+                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Eliminar</button></div>
                                 </div>
                             </div>
                             <!-- Consulta OFAC -->
@@ -1316,8 +1316,8 @@ function clientFormView() {
                                 <div style="flex-shrink:0;"><i class="far fa-file-alt" style="font-size:28px;color:#adb5bd;"></i></div>
                                 <div style="flex:1;min-width:0;">
                                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:12px;">Consulta OFAC</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
-                                    <div style="font-size:11px;color:#6c757d;line-height:1.6;"><span># 141414</span><br><span><i class="fas fa-calendar-alt" style="margin-right:3px;"></i>Issued 4 de jun</span></div>
-                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button></div>
+                                    <div style="font-size:11px;color:#6c757d;line-height:1.6;"><span># 141414</span><br><span><i class="fas fa-calendar-alt" style="margin-right:3px;"></i>Expedido 4 de jun</span></div>
+                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Eliminar</button></div>
                                 </div>
                             </div>
                             <!-- Agregar Documentos -->
