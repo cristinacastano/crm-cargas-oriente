@@ -1238,40 +1238,91 @@ function clientFormView() {
                             <span class="o-notebook-tab" style="font-size:12px;padding:6px 12px;">Comercial</span>
                             <span class="o-notebook-tab" style="font-size:12px;padding:6px 12px;">Fichas t&eacute;cnicas / Hojas de seguridad</span>
                         </div>
-                        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
-                            <div style="border:1px solid #28a745;border-radius:6px;padding:12px;background:#fff;">
-                                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><strong style="font-size:12px;">C&aacute;mara de Comercio</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
-                                <div style="font-size:11px;color:#6c757d;"><i class="fas fa-file" style="margin-right:4px;"></i># 141414<br><i class="fas fa-calendar" style="margin-right:4px;"></i>Vence: 30/12/2026</div>
-                                <div style="margin-top:8px;display:flex;gap:4px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;">Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;color:#dc3545;">Delete</button></div>
+                        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+                            <!-- Cámara de Comercio - Próximo a vencer -->
+                            <div style="border:1px solid #ffc107;border-radius:6px;padding:14px;background:#fff;display:flex;gap:10px;">
+                                <div style="flex-shrink:0;"><i class="far fa-file-alt" style="font-size:28px;color:#adb5bd;"></i></div>
+                                <div style="flex:1;min-width:0;">
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:12px;">Certificado de C&aacute;mara de Comercio</strong><span class="o-badge-status o-badge-warning" style="font-size:9px;white-space:nowrap;">Pr&oacute;ximo a vencer</span></div>
+                                    <div style="font-size:11px;color:#6c757d;line-height:1.6;"><span># 141414</span><br><span><i class="fas fa-calendar-alt" style="margin-right:3px;"></i>Issued 1 de ene</span><br><span><i class="fas fa-calendar-times" style="margin-right:3px;"></i>Expires 30 de jun</span></div>
+                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button></div>
+                                </div>
                             </div>
-                            <div style="border:1px solid #28a745;border-radius:6px;padding:12px;background:#fff;">
-                                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><strong style="font-size:12px;">Registro RUES</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
-                                <div style="font-size:11px;color:#6c757d;"><i class="fas fa-file" style="margin-right:4px;"></i></div>
-                                <div style="margin-top:8px;display:flex;gap:4px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;">Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;color:#dc3545;">Delete</button></div>
+                            <!-- Registro RUES -->
+                            <div style="border:1px solid #28a745;border-radius:6px;padding:14px;background:#fff;display:flex;gap:10px;">
+                                <div style="flex-shrink:0;"><i class="far fa-file-alt" style="font-size:28px;color:#adb5bd;"></i></div>
+                                <div style="flex:1;min-width:0;">
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:12px;">Registro RUES</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
+                                    <div style="font-size:11px;color:#6c757d;line-height:1.6;">&nbsp;</div>
+                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button></div>
+                                </div>
                             </div>
-                            <div style="border:1px solid #28a745;border-radius:6px;padding:12px;background:#fff;">
-                                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><strong style="font-size:12px;">Estudio de seguridad</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
-                                <div style="font-size:11px;color:#6c757d;"><i class="fas fa-file" style="margin-right:4px;"></i></div>
-                                <div style="margin-top:8px;display:flex;gap:4px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;">Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;color:#dc3545;">Delete</button></div>
+                            <!-- Estudio de seguridad -->
+                            <div style="border:1px solid #28a745;border-radius:6px;padding:14px;background:#fff;display:flex;gap:10px;">
+                                <div style="flex-shrink:0;"><i class="far fa-file-alt" style="font-size:28px;color:#adb5bd;"></i></div>
+                                <div style="flex:1;min-width:0;">
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:12px;">Estudio de seguridad</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
+                                    <div style="font-size:11px;color:#6c757d;line-height:1.6;">&nbsp;</div>
+                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button></div>
+                                </div>
                             </div>
-                            <div style="border:1px solid #28a745;border-radius:6px;padding:12px;background:#fff;">
-                                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><strong style="font-size:12px;">Estados financieros</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
-                                <div style="font-size:11px;color:#6c757d;"><i class="fas fa-file" style="margin-right:4px;"></i></div>
-                                <div style="margin-top:8px;display:flex;gap:4px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;">Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;color:#dc3545;">Delete</button></div>
+                            <!-- Estados financieros -->
+                            <div style="border:1px solid #28a745;border-radius:6px;padding:14px;background:#fff;display:flex;gap:10px;">
+                                <div style="flex-shrink:0;"><i class="far fa-file-alt" style="font-size:28px;color:#adb5bd;"></i></div>
+                                <div style="flex:1;min-width:0;">
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:12px;">Estados financieros</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
+                                    <div style="font-size:11px;color:#6c757d;line-height:1.6;">&nbsp;</div>
+                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button></div>
+                                </div>
                             </div>
-                            <div style="border:1px solid #28a745;border-radius:6px;padding:12px;background:#fff;">
-                                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><strong style="font-size:12px;">RUT</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
-                                <div style="font-size:11px;color:#6c757d;"><i class="fas fa-file" style="margin-right:4px;"></i></div>
-                                <div style="margin-top:8px;display:flex;gap:4px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;">Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;color:#dc3545;">Delete</button></div>
+                            <!-- Consulta Procuraduría -->
+                            <div style="border:1px solid #28a745;border-radius:6px;padding:14px;background:#fff;display:flex;gap:10px;">
+                                <div style="flex-shrink:0;"><i class="far fa-file-alt" style="font-size:28px;color:#adb5bd;"></i></div>
+                                <div style="flex:1;min-width:0;">
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:12px;">Consulta Procuradur&iacute;a</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
+                                    <div style="font-size:11px;color:#6c757d;line-height:1.6;">&nbsp;</div>
+                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button></div>
+                                </div>
                             </div>
-                            <div style="border:1px solid #28a745;border-radius:6px;padding:12px;background:#fff;">
-                                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><strong style="font-size:12px;">C&eacute;dula rep. legal</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
-                                <div style="font-size:11px;color:#6c757d;"><i class="fas fa-file" style="margin-right:4px;"></i></div>
-                                <div style="margin-top:8px;display:flex;gap:4px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;">Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:2px 6px;color:#dc3545;">Delete</button></div>
+                            <!-- Consulta Policía -->
+                            <div style="border:1px solid #28a745;border-radius:6px;padding:14px;background:#fff;display:flex;gap:10px;">
+                                <div style="flex-shrink:0;"><i class="far fa-file-alt" style="font-size:28px;color:#adb5bd;"></i></div>
+                                <div style="flex:1;min-width:0;">
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:12px;">Consulta Polic&iacute;a</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
+                                    <div style="font-size:11px;color:#6c757d;line-height:1.6;">&nbsp;</div>
+                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button></div>
+                                </div>
                             </div>
-                            <div style="border:1px dashed #dee2e6;border-radius:6px;padding:16px;text-align:center;cursor:pointer;color:var(--o-action);" onclick="openClientDocModal()">
-                                <i class="fas fa-plus" style="font-size:18px;margin-bottom:4px;display:block;"></i>
-                                <span style="font-size:11px;">Agregar Documentos</span>
+                            <!-- RUT -->
+                            <div style="border:1px solid #28a745;border-radius:6px;padding:14px;background:#fff;display:flex;gap:10px;">
+                                <div style="flex-shrink:0;"><i class="far fa-file-alt" style="font-size:28px;color:#adb5bd;"></i></div>
+                                <div style="flex:1;min-width:0;">
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:12px;">Registro &Uacute;nico Tributario (RUT)</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
+                                    <div style="font-size:11px;color:#6c757d;line-height:1.6;">&nbsp;</div>
+                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button></div>
+                                </div>
+                            </div>
+                            <!-- Cédula representante legal -->
+                            <div style="border:1px solid #28a745;border-radius:6px;padding:14px;background:#fff;display:flex;gap:10px;">
+                                <div style="flex-shrink:0;"><i class="far fa-file-alt" style="font-size:28px;color:#adb5bd;"></i></div>
+                                <div style="flex:1;min-width:0;">
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:12px;">C&eacute;dula del representante legal</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
+                                    <div style="font-size:11px;color:#6c757d;line-height:1.6;">&nbsp;</div>
+                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button></div>
+                                </div>
+                            </div>
+                            <!-- Consulta OFAC -->
+                            <div style="border:1px solid #28a745;border-radius:6px;padding:14px;background:#fff;display:flex;gap:10px;">
+                                <div style="flex-shrink:0;"><i class="far fa-file-alt" style="font-size:28px;color:#adb5bd;"></i></div>
+                                <div style="flex:1;min-width:0;">
+                                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:12px;">Consulta OFAC</strong><span class="o-badge-status o-badge-success" style="font-size:9px;">Vigente</span></div>
+                                    <div style="font-size:11px;color:#6c757d;line-height:1.6;"><span># 141414</span><br><span><i class="fas fa-calendar-alt" style="margin-right:3px;"></i>Issued 4 de jun</span></div>
+                                    <div style="margin-top:8px;display:flex;gap:6px;"><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Edit</button><button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Delete</button></div>
+                                </div>
+                            </div>
+                            <!-- Agregar Documentos -->
+                            <div style="border:1px dashed #dee2e6;border-radius:6px;padding:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--o-action);font-style:italic;" onclick="openClientDocModal()">
+                                <span style="font-size:13px;">Agregar Documentos</span>
                             </div>
                         </div>
                     </div>
