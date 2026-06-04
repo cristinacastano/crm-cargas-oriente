@@ -1395,43 +1395,107 @@ function openClientDocModal() {
 function routesListView() {
     return `
     <div class="o-control-panel">
-        <div class="o-cp-left"><span class="o-breadcrumb">Rutas Logísticas</span><button class="o-btn o-btn-primary" onclick="openRouteForm()"><i class="fas fa-plus"></i> Nuevo</button></div>
-        <div class="o-cp-right"><div class="o-searchbar"><i class="fas fa-search"></i><input placeholder="Buscar..."></div><div class="o-pager"><span>1-4 / 4</span></div></div>
+        <div class="o-cp-left">
+            <button class="o-btn o-btn-primary" onclick="openRouteForm()"><i class="fas fa-plus"></i> Nuevo</button>
+            <span class="o-breadcrumb">Rutas log&iacute;sticas</span>
+        </div>
+        <div class="o-cp-right">
+            <div class="o-searchbar"><i class="fas fa-search"></i><input placeholder="Buscar..."></div>
+            <span class="o-badge-status o-badge-success" style="cursor:pointer;margin-right:4px;">Activas</span>
+            <div class="o-pager"><span>1-2 / 2</span></div>
+        </div>
     </div>
     <div class="o-list-view">
         <table>
-            <thead><tr><th style="width:30px;"><input type="checkbox" class="o-checkbox"></th><th>Código</th><th>Origen</th><th>Destino</th><th>Cliente</th><th>Producto</th><th>Flete Vigente</th><th>Tipo Cobro</th><th>Distancia</th><th>Estado</th></tr></thead>
+            <thead><tr><th style="width:30px;"><input type="checkbox" class="o-checkbox"></th><th>C&oacute;digo</th><th>Nombre de ruta</th><th>Ciudad origen</th><th>Ciudad destino</th><th>Distancia (km)</th><th>Cantidad...</th><th>Compa&ntilde;&iacute;a</th></tr></thead>
             <tbody>
-                <tr onclick="openRouteDetail()"><td><input type="checkbox" class="o-checkbox"></td><td><strong>R-001</strong></td><td>Guarne</td><td>Rionegro-Tanque</td><td>ISAGEN</td><td>Carga seca</td><td>$2,850,000</td><td>Por viaje</td><td>45 km</td><td><span class="o-badge-status o-badge-success">Activa</span></td></tr>
-                <tr onclick="openRouteDetail()"><td><input type="checkbox" class="o-checkbox"></td><td><strong>R-002</strong></td><td>Sonson</td><td>Tocancipá</td><td>ISAGEN</td><td>Químicos</td><td>$4,200,000</td><td>Por viaje</td><td>320 km</td><td><span class="o-badge-status o-badge-success">Activa</span></td></tr>
-                <tr onclick="openRouteDetail()"><td><input type="checkbox" class="o-checkbox"></td><td><strong>R-003</strong></td><td>Marinilla</td><td>Bogotá</td><td>Peldar</td><td>Vidrio</td><td>$85,000</td><td>Por tonelada</td><td>410 km</td><td><span class="o-badge-status o-badge-success">Activa</span></td></tr>
-                <tr><td><input type="checkbox" class="o-checkbox"></td><td><strong>R-004</strong></td><td>Rionegro</td><td>Medellín</td><td>Sika</td><td>Químicos</td><td>$1,200,000</td><td>Por viaje</td><td>35 km</td><td><span class="o-badge-status o-badge-secondary">Inactiva</span></td></tr>
+                <tr onclick="openRouteDetail()"><td><input type="checkbox" class="o-checkbox"></td><td><strong>1</strong></td><td>Guarne-Rionegro-Tanque</td><td>GUARNE</td><td>RIONEGRO</td><td>21,00</td><td>1</td><td>CARGAS DEL ORIENTE S A</td></tr>
+                <tr onclick="openRouteDetail()"><td><input type="checkbox" class="o-checkbox"></td><td><strong>DEMO-RUTA-21</strong></td><td>Demo Guarne - Rionegro</td><td>Guarne</td><td>Rionegro</td><td>46,00</td><td>1</td><td>CARGAS DEL ORIENTE S A</td></tr>
             </tbody>
         </table>
     </div>`;
 }
 
 function openRouteForm() {
-    openModal('Nueva Ruta', `
-        <div class="o-form-view">
-            <div class="o-group">
-                <div>
-                    <div class="o-field-row"><span class="o-field-label">Código Ruta</span><span class="o-field-value"><input placeholder="R-005"></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Nombre</span><span class="o-field-value"><input placeholder="Guarne - Rionegro"></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Cliente</span><span class="o-field-value"><select><option>Seleccionar...</option><option>ISAGEN</option><option>Peldar</option><option>Sika</option></select></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Producto</span><span class="o-field-value"><select><option>Seleccionar...</option><option>Carga seca</option><option>Químicos</option><option>Alimentos</option></select></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Distancia (km)</span><span class="o-field-value"><input type="number" placeholder="120"></span></div>
+    document.getElementById('mainContent').innerHTML = routeNewFormView();
+}
+
+function routeNewFormView() {
+    return `
+    <div class="o-control-panel">
+        <div class="o-cp-left">
+            <span class="o-breadcrumb"><span class="parent" onclick="loadView('routes')">Rutas log&iacute;sticas</span><span class="separator">/</span>Nuevo</span>
+            <button class="o-btn o-btn-icon" title="Guardar"><i class="fas fa-save"></i></button>
+            <button class="o-btn o-btn-icon" title="Descartar"><i class="fas fa-undo"></i></button>
+        </div>
+        <div class="o-cp-right"><button class="o-btn o-btn-secondary"><i class="fas fa-cog"></i></button></div>
+    </div>
+    <div class="o-form-view">
+        <div class="o-form-sheet">
+            <h5 style="font-size:13px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:1px solid #e9ecef;padding-bottom:6px;margin:0 0 14px;">Informaci&oacute;n General</h5>
+            <div style="max-width:500px;">
+                <div class="o-field-row"><span class="o-field-label">C&oacute;digo</span><span class="o-field-value"><input placeholder=""></span></div>
+                <div class="o-field-row"><span class="o-field-label">Nombre de ruta</span><span class="o-field-value"><input placeholder="Ej: Guarne-Rionegro-Tanque"></span></div>
+                <div class="o-field-row"><span class="o-field-label">Distancia (km)</span><span class="o-field-value"><input type="number" step="0.01" placeholder="0,00"></span></div>
+                <div class="o-field-row"><span class="o-field-label">Compa&ntilde;&iacute;a</span><span class="o-field-value"><input value="CARGAS DEL ORIENTE S A" readonly></span></div>
+            </div>
+
+            <div class="o-notebook" style="margin-top:20px;">
+                <div class="o-notebook-tabs">
+                    <span class="o-notebook-tab active" onclick="switchVehicleTab(this,'rn-trayecto')">Trayecto</span>
+                    <span class="o-notebook-tab" onclick="switchVehicleTab(this,'rn-param')">Parametrizaci&oacute;n Econ&oacute;mica</span>
+                    <span class="o-notebook-tab" onclick="switchVehicleTab(this,'rn-costos')">Costos Operativos</span>
                 </div>
-                <div>
-                    <div class="o-field-row"><span class="o-field-label">Origen - Ciudad</span><span class="o-field-value"><input placeholder="Guarne"></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Origen - Depto</span><span class="o-field-value"><select><option>Antioquia</option><option>Cundinamarca</option></select></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Destino - Ciudad</span><span class="o-field-value"><input placeholder="Rionegro"></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Destino - Depto</span><span class="o-field-value"><select><option>Antioquia</option><option>Cundinamarca</option></select></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Estado</span><span class="o-field-value"><select><option>Activa</option><option>Inactiva</option></select></span></div>
+
+                <!-- TAB: Trayecto -->
+                <div class="o-notebook-content o-tab-content" id="rn-trayecto">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+                        <div>
+                            <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;margin-bottom:10px;">Origen</h5>
+                            <div class="o-field-row"><span class="o-field-label">Direcci&oacute;n origen</span><span class="o-field-value"><input placeholder=""></span></div>
+                            <div class="o-field-row"><span class="o-field-label">Ciudad origen</span><span class="o-field-value"><input placeholder=""></span></div>
+                            <div class="o-field-row"><span class="o-field-label">Departamento origen</span><span class="o-field-value"><input placeholder=""></span></div>
+                            <div class="o-field-row"><span class="o-field-label">Latitud origen</span><span class="o-field-value"><input value="0,0000000"></span></div>
+                            <div class="o-field-row"><span class="o-field-label">Longitud origen</span><span class="o-field-value"><input value="0,0000000"></span></div>
+                        </div>
+                        <div>
+                            <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;margin-bottom:10px;">Destino</h5>
+                            <div class="o-field-row"><span class="o-field-label">Direcci&oacute;n destino</span><span class="o-field-value"><input placeholder=""></span></div>
+                            <div class="o-field-row"><span class="o-field-label">Ciudad destino</span><span class="o-field-value"><input placeholder=""></span></div>
+                            <div class="o-field-row"><span class="o-field-label">Departamento destino</span><span class="o-field-value"><input placeholder=""></span></div>
+                            <div class="o-field-row"><span class="o-field-label">Latitud destino</span><span class="o-field-value"><input value="0,0000000"></span></div>
+                            <div class="o-field-row"><span class="o-field-label">Longitud destino</span><span class="o-field-value"><input value="0,0000000"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: Parametrización Económica -->
+                <div class="o-notebook-content o-tab-content" id="rn-param" style="display:none;">
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;">
+                        <div style="border:1px dashed #dee2e6;border-radius:6px;padding:16px;text-align:center;cursor:pointer;color:var(--o-action);" onclick="openTarifaRutaModal()">
+                            <span style="font-size:13px;font-style:italic;">Agregar Tarifas de ruta</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: Costos Operativos -->
+                <div class="o-notebook-content o-tab-content" id="rn-costos" style="display:none;">
+                    <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;margin-bottom:10px;">Peajes</h5>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:20px;">
+                        <div style="border:1px dashed #dee2e6;border-radius:6px;padding:16px;text-align:center;cursor:pointer;color:var(--o-action);">
+                            <span style="font-size:13px;font-style:italic;">Agregar Peajes de ruta</span>
+                        </div>
+                    </div>
+                    <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;margin-bottom:10px;">Combustible</h5>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;">
+                        <div style="border:1px dashed #dee2e6;border-radius:6px;padding:16px;text-align:center;cursor:pointer;color:var(--o-action);">
+                            <span style="font-size:13px;font-style:italic;">Agregar Estimados de combustible</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    `, `<button class="o-btn o-btn-secondary" onclick="closeModal()">Descartar</button><button class="o-btn o-btn-primary" onclick="closeModal()">Guardar</button>`);
+    </div>`;
 }
 
 function openRouteDetail() {
@@ -1441,47 +1505,99 @@ function openRouteDetail() {
 function routeFormView() {
     return `
     <div class="o-control-panel">
-        <div class="o-cp-left"><span class="o-breadcrumb"><span class="parent" onclick="loadView('routes')">Rutas</span><span class="separator">/</span>R-001: Guarne â†' Rionegro-Tanque</span></div>
-        <div class="o-cp-right"><button class="o-btn o-btn-secondary"><i class="fas fa-edit"></i> Editar</button></div>
+        <div class="o-cp-left"><span class="o-breadcrumb"><span class="parent" onclick="loadView('routes')">Rutas log&iacute;sticas</span><span class="separator">/</span>Guarne-Rionegro-Tanque</span></div>
+        <div class="o-cp-right"><button class="o-btn o-btn-secondary"><i class="fas fa-cog"></i></button><div class="o-pager"><button><i class="fas fa-chevron-left"></i></button><span>1 / 2</span><button><i class="fas fa-chevron-right"></i></button></div></div>
     </div>
     <div class="o-form-view">
-        <div class="o-form-statusbar">
-            <div class="o-statusbar-buttons"></div>
-            <div class="o-statusbar-status"><span class="o-status-pill done">Activa</span><span class="o-status-pill">Inactiva</span><span class="o-status-pill">Suspendida</span></div>
-        </div>
-        <div class="o-group">
-            <div>
-                <div class="o-field-row"><span class="o-field-label">Código</span><span class="o-field-value">R-001</span></div>
-                <div class="o-field-row"><span class="o-field-label">Cliente</span><span class="o-field-value" style="color:var(--o-brand);font-weight:500;">ISAGEN S.A. E.S.P.</span></div>
-                <div class="o-field-row"><span class="o-field-label">Producto</span><span class="o-field-value">Carga seca</span></div>
-                <div class="o-field-row"><span class="o-field-label">Distancia</span><span class="o-field-value">45 km</span></div>
+        <div class="o-form-sheet">
+            <h5 style="font-size:13px;font-weight:700;text-transform:uppercase;color:#495057;border-bottom:1px solid #e9ecef;padding-bottom:6px;margin:0 0 14px;">Informaci&oacute;n General</h5>
+            <div style="max-width:500px;">
+                <div class="o-field-row"><span class="o-field-label">C&oacute;digo</span><span class="o-field-value">1</span></div>
+                <div class="o-field-row"><span class="o-field-label">Nombre de ruta</span><span class="o-field-value">Guarne-Rionegro-Tanque</span></div>
+                <div class="o-field-row"><span class="o-field-label">Distancia (km)</span><span class="o-field-value">21,00</span></div>
+                <div class="o-field-row"><span class="o-field-label">Compa&ntilde;&iacute;a</span><span class="o-field-value">CARGAS DEL ORIENTE S A</span></div>
             </div>
-            <div>
-                <div class="o-field-row"><span class="o-field-label">Origen</span><span class="o-field-value">Guarne, Antioquia</span></div>
-                <div class="o-field-row"><span class="o-field-label">Destino</span><span class="o-field-value">Rionegro-Tanque, Antioquia</span></div>
-                <div class="o-field-row"><span class="o-field-label">Empresa</span><span class="o-field-value">Cargas del Oriente S.A.</span></div>
-            </div>
-        </div>
-        <div class="o-notebook">
-            <div class="o-notebook-tabs">
-                <span class="o-notebook-tab active">Tarifas / Vigencias</span>
-                <span class="o-notebook-tab">Peajes</span>
-                <span class="o-notebook-tab">Combustible</span>
-                <span class="o-notebook-tab">Vehículos Permitidos</span>
-            </div>
-            <div class="o-notebook-content">
-                <div class="o-inline-list">
-                    <table>
-                        <thead><tr><th>Concepto</th><th>Valor</th><th>Tipo Cobro</th><th>Inicio Vigencia</th><th>Fin Vigencia</th><th>Estado</th></tr></thead>
-                        <tbody>
-                            <tr><td>Flete Cliente</td><td>$2,850,000</td><td>Por viaje</td><td>01/01/2026</td><td>31/12/2026</td><td><span class="o-badge-status o-badge-success">Vigente</span></td></tr>
-                            <tr><td>Pago Conductor</td><td>$650,000</td><td>Por viaje</td><td>01/01/2026</td><td>31/12/2026</td><td><span class="o-badge-status o-badge-success">Vigente</span></td></tr>
-                            <tr><td>Auxilio Rodamiento</td><td>$80,000</td><td>Por viaje</td><td>01/01/2026</td><td>31/12/2026</td><td><span class="o-badge-status o-badge-success">Vigente</span></td></tr>
-                            <tr><td>Descargue</td><td>$120,000</td><td>Por viaje</td><td>01/01/2026</td><td>31/12/2026</td><td><span class="o-badge-status o-badge-success">Vigente</span></td></tr>
-                            <tr style="color:var(--o-text-light);"><td>Flete Cliente (anterior)</td><td>$2,650,000</td><td>Por viaje</td><td>01/01/2025</td><td>31/12/2025</td><td><span class="o-badge-status o-badge-secondary">Vencida</span></td></tr>
-                        </tbody>
-                    </table>
-                    <div class="o-add-line"><i class="fas fa-plus"></i> Agregar tarifa</div>
+
+            <div class="o-notebook" style="margin-top:20px;">
+                <div class="o-notebook-tabs">
+                    <span class="o-notebook-tab active" onclick="switchVehicleTab(this,'rd-trayecto')">Trayecto</span>
+                    <span class="o-notebook-tab" onclick="switchVehicleTab(this,'rd-param')">Parametrizaci&oacute;n Econ&oacute;mica</span>
+                    <span class="o-notebook-tab" onclick="switchVehicleTab(this,'rd-costos')">Costos Operativos</span>
+                </div>
+
+                <!-- TAB: Trayecto -->
+                <div class="o-notebook-content o-tab-content" id="rd-trayecto">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+                        <div>
+                            <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;margin-bottom:10px;">Origen</h5>
+                            <div class="o-field-row"><span class="o-field-label">Direcci&oacute;n origen</span><span class="o-field-value">GUARNE</span></div>
+                            <div class="o-field-row"><span class="o-field-label">Ciudad origen</span><span class="o-field-value">GUARNE</span></div>
+                            <div class="o-field-row"><span class="o-field-label">Departamento origen</span><span class="o-field-value">ANTIOQUIA</span></div>
+                            <div class="o-field-row"><span class="o-field-label">Latitud origen</span><span class="o-field-value">0,0000000</span></div>
+                            <div class="o-field-row"><span class="o-field-label">Longitud origen</span><span class="o-field-value">0,0000000</span></div>
+                        </div>
+                        <div>
+                            <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;margin-bottom:10px;">Destino</h5>
+                            <div class="o-field-row"><span class="o-field-label">Direcci&oacute;n destino</span><span class="o-field-value">RIONEGRO - TANQUE</span></div>
+                            <div class="o-field-row"><span class="o-field-label">Ciudad destino</span><span class="o-field-value">RIONEGRO</span></div>
+                            <div class="o-field-row"><span class="o-field-label">Departamento destino</span><span class="o-field-value">ANTIOQUIA</span></div>
+                            <div class="o-field-row"><span class="o-field-label">Latitud destino</span><span class="o-field-value">0,0000000</span></div>
+                            <div class="o-field-row"><span class="o-field-label">Longitud destino</span><span class="o-field-value">0,0000000</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: Parametrización Económica -->
+                <div class="o-notebook-content o-tab-content" id="rd-param" style="display:none;">
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;">
+                        <div style="border:1px solid #dee2e6;border-radius:6px;padding:14px;background:#fff;display:flex;gap:10px;">
+                            <div style="flex-shrink:0;"><i class="fas fa-money-bill-wave" style="font-size:24px;color:#28a745;"></i></div>
+                            <div style="flex:1;">
+                                <strong style="font-size:12px;">OMYA ANDIA S.A.</strong>
+                                <div style="font-size:11px;color:#495057;line-height:1.7;margin-top:4px;">
+                                    <div><i class="fas fa-truck" style="width:14px;color:#6c757d;"></i> $ 36.265,00 &middot; Tonelada</div>
+                                    <div><i class="fas fa-user" style="width:14px;color:#6c757d;"></i> $ 50.000,00</div>
+                                    <div><i class="fas fa-calendar" style="width:14px;color:#6c757d;"></i> 1 de ene - 31 de dic</div>
+                                </div>
+                                <div style="margin-top:8px;display:flex;gap:6px;">
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border:1px dashed #dee2e6;border-radius:6px;padding:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--o-action);" onclick="openTarifaRutaModal()">
+                            <span style="font-size:13px;font-style:italic;">Agregar Tarifas de ruta</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: Costos Operativos -->
+                <div class="o-notebook-content o-tab-content" id="rd-costos" style="display:none;">
+                    <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;margin-bottom:10px;">Peajes</h5>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-bottom:20px;">
+                        <div style="border:1px dashed #dee2e6;border-radius:6px;padding:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--o-action);">
+                            <span style="font-size:13px;font-style:italic;">Agregar Peajes de ruta</span>
+                        </div>
+                    </div>
+                    <h5 style="font-size:12px;font-weight:700;text-transform:uppercase;color:#495057;margin-bottom:10px;">Combustible</h5>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;">
+                        <div style="border:1px solid #dee2e6;border-radius:6px;padding:14px;background:#fff;display:flex;gap:10px;">
+                            <div style="flex-shrink:0;"><i class="fas fa-gas-pump" style="font-size:24px;color:#28a745;"></i></div>
+                            <div style="flex:1;">
+                                <strong style="font-size:12px;">VOLQUETA</strong>
+                                <div style="font-size:11px;color:#495057;line-height:1.7;margin-top:4px;">
+                                    <div><i class="fas fa-tint" style="width:14px;color:#6c757d;"></i> 30,00 gal</div>
+                                </div>
+                                <div style="margin-top:8px;display:flex;gap:6px;">
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="o-btn o-btn-secondary" style="font-size:10px;padding:3px 8px;color:#dc3545;border-color:#dc3545;"><i class="fas fa-trash"></i> Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border:1px dashed #dee2e6;border-radius:6px;padding:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--o-action);">
+                            <span style="font-size:13px;font-style:italic;">Agregar Estimados de combustible</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
