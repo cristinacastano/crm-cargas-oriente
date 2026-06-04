@@ -1350,19 +1350,19 @@ function openTarifaRutaModal() {
         <div class="o-form-view">
             <div class="o-group">
                 <div>
-                    <h5 style="font-size:12px;font-weight:700;margin-bottom:10px;">CUSTOMER FREIGHT RATES</h5>
+                    <h5 style="font-size:12px;font-weight:700;margin-bottom:10px;">TARIFAS DE FLETE</h5>
                     <div class="o-field-row"><span class="o-field-label">Ruta</span><span class="o-field-value"><select style="width:100%;"><option>Seleccionar...</option><option>Guarne &rarr; Rionegro</option><option>Sonson &rarr; Tocancip&aacute;</option><option>Marinilla &rarr; Bogot&aacute;</option></select></span></div>
                     <div class="o-field-row"><span class="o-field-label">Valor del flete</span><span class="o-field-value"><input type="number" value="0" step="0.01" placeholder="$ 0,00"></span></div>
                     <div class="o-field-row"><span class="o-field-label">Tipo de cobro</span><span class="o-field-value"><select><option>Viaje</option><option>Tonelada</option><option>Gal&oacute;n</option></select></span></div>
-                    <div class="o-field-row"><span class="o-field-label">Start Date</span><span class="o-field-value"><input type="date"></span></div>
-                    <div class="o-field-row"><span class="o-field-label">End Date</span><span class="o-field-value"><input type="date"></span></div>
-                    <h5 style="font-size:12px;font-weight:700;margin:16px 0 10px;">ADDITIONAL VALUES</h5>
+                    <div class="o-field-row"><span class="o-field-label">Fecha inicio</span><span class="o-field-value"><input type="date"></span></div>
+                    <div class="o-field-row"><span class="o-field-label">Fecha fin</span><span class="o-field-value"><input type="date"></span></div>
+                    <h5 style="font-size:12px;font-weight:700;margin:16px 0 10px;">VALORES ADICIONALES</h5>
                     <div class="o-field-row"><span class="o-field-label">Auxilio de rodamiento</span><span class="o-field-value"><input type="number" value="0" step="0.01" placeholder="$ 0,00"></span></div>
                     <div class="o-field-row"><span class="o-field-label">Ajuste de ruta</span><span class="o-field-value"><input type="number" value="0" step="0.01" placeholder="$ 0,00"></span></div>
                     <div class="o-field-row"><span class="o-field-label">Valor de descargue</span><span class="o-field-value"><input type="number" value="0" step="0.01" placeholder="$ 0,00"></span></div>
                 </div>
                 <div>
-                    <h5 style="font-size:12px;font-weight:700;margin-bottom:10px;">DRIVER PAYMENT</h5>
+                    <h5 style="font-size:12px;font-weight:700;margin-bottom:10px;">PAGO AL CONDUCTOR</h5>
                     <div class="o-field-row"><span class="o-field-label">Pago conductor</span><span class="o-field-value"><input type="number" value="0" step="0.01" placeholder="$ 0,00"></span></div>
                     <div class="o-field-row"><span class="o-field-label">Tipo de pago conductor</span><span class="o-field-value"><select><option>Viaje</option><option>Tonelada</option></select></span></div>
                 </div>
